@@ -14,14 +14,12 @@ class login_fields extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: TextField(
               decoration: new InputDecoration(
-                  enabledBorder: new OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          new BorderSide(width: 1.5, color: Colors.black54)),
-                  focusedBorder: new OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          new BorderSide(width: 2, color: Colors.paste)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(width: 1.5, color: Colors.black54),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(width: 1.5, color: Colors.paste),
+                  ),
                   hintText: 'sherimello@xyz.com',
                   labelText: 'email',
                   hintStyle: TextStyle(
@@ -39,14 +37,12 @@ class login_fields extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: TextField(
               decoration: new InputDecoration(
-                  enabledBorder: new OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          new BorderSide(width: 1.5, color: Colors.black54)),
-                  focusedBorder: new OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          new BorderSide(width: 2, color: Colors.paste)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(width: 1.5, color: Colors.black54),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(width: 1.5, color: Colors.paste),
+                  ),
                   hintText: '*******',
                   labelText: 'password',
                   hintStyle: TextStyle(
