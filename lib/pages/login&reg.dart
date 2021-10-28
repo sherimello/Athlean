@@ -28,14 +28,14 @@ class _loginState extends State<login> {
                 height: MediaQuery.of(context).size.height * .45 +
                     MediaQuery.of(context).padding.top,
                 color: Colors.black,
-                child: new login_page_header(),
+                child: new login_page_header(), //this part is for the header info in the login page.....
               ),
               Container(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * .55 -
                     MediaQuery.of(context).padding.top * 2,
                 color: Colors.white,
-                child: new login_fields()
+                child: new login_fields(), //this part is for the input fields of the login page.....
               )
             ],
           ),
