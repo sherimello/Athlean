@@ -1,4 +1,6 @@
+import 'package:athlean/widgets/color.dart';
 import 'package:flutter/material.dart';
+
 
 class login_page_header extends StatelessWidget {
   const login_page_header({Key? key}) : super(key: key);
@@ -42,32 +44,43 @@ class login_page_header extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(13,8,13,8),
-                child: Text(
-                  "learn more",
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.paste,
-                    fontWeight: FontWeight.bold,
+                child: InkWell(
+                  onTap: (){
+                    //launch('https://docs.flutter.io/flutter/services/UrlLauncher-class.html'); add url_launcher header file above.
+                  },
+                  child: Text(
+                    "learn more",
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: CustomColor.orangy,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-              Card(
-                color: Colors.paste,
-                semanticContainer: true,
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(1000.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(10),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(13,8,13,8),
-                  child: Text(
-                    "   sign up   ",
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+              InkWell(
+                onTap: (){
+                  Navigator.of(context).pushNamed('/registration');
+                },
+                child: Card(
+                  color: CustomColor.orangy,
+                  semanticContainer: true,
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(1000.0),
+                  ),
+                  elevation: 5,
+                  margin: EdgeInsets.all(10),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(13,8,13,8),
+                    child: Text(
+                      "   sign up   ",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+
                     ),
                   ),
                 ),
