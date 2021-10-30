@@ -1,4 +1,4 @@
-# athlean
+# AthLean
 
 Athlean official app.
 
