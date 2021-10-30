@@ -52,7 +52,7 @@ class login_page_header extends StatelessWidget {
                     "learn more",
                     style: TextStyle(
                       fontSize: 17,
-                      color: CustomColor.orangy,
+                      color: orangy,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -63,7 +63,7 @@ class login_page_header extends StatelessWidget {
                   Navigator.of(context).pushNamed('/registration');
                 },
                 child: Card(
-                  color: CustomColor.orangy,
+                  color: orangy,
                   semanticContainer: true,
                   clipBehavior: Clip.antiAlias,
                   shape: RoundedRectangleBorder(

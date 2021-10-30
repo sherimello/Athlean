@@ -21,7 +21,7 @@ class Reg_fields extends StatelessWidget {
                       borderSide: BorderSide(width: 1.5, color: Colors.black54),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(width: 1.5, color: CustomColor.orangy),
+                      borderSide: BorderSide(width: 1.5, color: orangy),
                     ),
 
                     labelText: 'username',
@@ -31,9 +31,9 @@ class Reg_fields extends StatelessWidget {
                         color: Colors.black54, fontWeight: FontWeight.w600),
                     prefixIcon: const Icon(
                       Icons.person,
-                      color: CustomColor.orangy,
+                      color: orangy,
                     ),
-                    suffixStyle: const TextStyle(color: CustomColor.orangy)),
+                    suffixStyle: const TextStyle(color: orangy)),
               ),
             ),
             Padding(
@@ -44,7 +44,7 @@ class Reg_fields extends StatelessWidget {
                       borderSide: BorderSide(width: 1.5, color: Colors.black54),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(width: 1.5, color: CustomColor.orangy),
+                      borderSide: BorderSide(width: 1.5, color: orangy),
                     ),
                     hintText: 'sherimello@xyz.com',
                     labelText: 'email',
@@ -54,9 +54,9 @@ class Reg_fields extends StatelessWidget {
                         color: Colors.black54, fontWeight: FontWeight.w600),
                     prefixIcon: const Icon(
                       Icons.email,
-                      color: CustomColor.orangy,
+                      color: orangy,
                     ),
-                    suffixStyle: const TextStyle(color: CustomColor.orangy)),
+                    suffixStyle: const TextStyle(color: orangy)),
               ),
             ),
             Padding(
@@ -67,7 +67,7 @@ class Reg_fields extends StatelessWidget {
                       borderSide: BorderSide(width: 1.5, color: Colors.black54),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(width: 1.5, color: CustomColor.orangy),
+                      borderSide: BorderSide(width: 1.5, color: orangy),
                     ),
                     hintText: '*******',
                     labelText: 'password',
@@ -77,9 +77,9 @@ class Reg_fields extends StatelessWidget {
                         color: Colors.black54, fontWeight: FontWeight.w600),
                     prefixIcon: const Icon(
                       Icons.password,
-                      color: CustomColor.orangy,
+                      color: orangy,
                     ),
-                    suffixStyle: const TextStyle(color: CustomColor.orangy)),
+                    suffixStyle: const TextStyle(color: orangy)),
               ),
             ),
             Padding(
@@ -97,7 +97,7 @@ class Reg_fields extends StatelessWidget {
                         "Already have an account?",
                         style: TextStyle(
                           fontSize: 14,
-                          color: CustomColor.orangy,
+                          color: orangy,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -118,7 +118,7 @@ class Reg_fields extends StatelessWidget {
                         "  Register  ",
                         style: TextStyle(
                           fontSize: 17,
-                          color: CustomColor.orangy,
+                          color: orangy,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

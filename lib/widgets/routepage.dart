@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/login&reg.dart';
 import '../pages/registrationpanel.dart';
+import '../pages/Homapage.dart';
 
 
 class RoutePage{
@@ -12,7 +13,8 @@ class RoutePage{
         return MaterialPageRoute(builder: (_)=>login());
       case '/registration':
         return MaterialPageRoute(builder: (_)=>Reg_fields());
-
+      case '/home':
+        return MaterialPageRoute(builder: (_)=>HomeScreen());
         return _errorRoute();
       default:
         return _errorRoute();
