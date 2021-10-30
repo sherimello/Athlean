@@ -2,15 +2,36 @@
 
 Athlean official app.
 
-## Getting Started
+## Application Introduction
+AthLean is a reiterated smart app to every existing fitness and sleep tracking projects out there. 
+Accurate data combined with our in-house algorithms are ought to provide the users with accurate 
+caloric dataset and lead them to where they want to see themselves in almost any given time.
 
-This project is a starting point for a Flutter application.
+## Why this project?
+We know that the Obesity is considered to be an epidemic level threat to human health
+in the world. Those who suffer from obesity are often at higher risk for dangerous
+diseases like heart diseases and stroke, cancers, liver failure, fatty liver diseases, sleep
+apnea, depressions etc etc. but Overweight and Obesity is not the only problem , not
+eating timely doing unnecessary or improper diet even when you are not overweight
+also cause the underweight problem which then lead to health issues like weakness,
+depressions, laziness etc etc.
+We designed our application in a way that whether the user is obese or underweight,
+they can follow proper health diet to be healthy and productive. Our objectives of the
+programs are :
 
-A few resources to get you started if this is your first Flutter project:
+1. Increase the proportion of adults who are healthy weight.
+2. To reduce the proportion of people who are suffering from obesity and
+underweight.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Conclusion:
+Our Application offers the proper guidelines on healthier choices of foods and
+also proper gymnastic or physical activities. Users' data will be used to personalise their
+diet suggestions and also it will be useful to track their daily activities like sleeping,
+calorie consuming, etc. This application will help a lot of people as the young generation
+are getting interested in being healthy. The young generations ,the GEN Z, drink
+alcohol and eat unhealthy food less than their previous generation.So our application
+will be able to guide them through their dedication and as we can see the usability of
+this application is enormous. We've thus named it AthLean.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## This application is currently underdevelopment.
+All copyrights go to Team AthLean.
