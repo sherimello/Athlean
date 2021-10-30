@@ -15,6 +15,7 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       onGenerateRoute: RoutePage.generateRoute,
       home: Material(
@@ -31,7 +32,7 @@ class _loginState extends State<login> {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height * .40 +
+                    height: MediaQuery.of(context).size.height * .45 +
                         MediaQuery.of(context).padding.top,
                     color: Colors.black,
                     child: new login_page_header(),

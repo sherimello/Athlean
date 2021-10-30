@@ -74,23 +74,28 @@ class login_fields extends StatelessWidget {
                     ),
                   ),
                 ),
-                Card(
-                  color: Colors.black,
-                  semanticContainer: true,
-                  clipBehavior: Clip.antiAlias,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(1000.0),
-                  ),
-                  elevation: 5,
-                  margin: EdgeInsets.all(10),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(13, 8, 13, 8),
-                    child: Text(
-                      "   sign in   ",
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: CustomColor.orangy,
-                        fontWeight: FontWeight.bold,
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pushNamed('/home');
+                  },
+                  child: Card(
+                    color: Colors.black,
+                    semanticContainer: true,
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(1000.0),
+                    ),
+                    elevation: 5,
+                    margin: EdgeInsets.all(10),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(13, 8, 13, 8),
+                      child: Text(
+                        "   sign in   ",
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: CustomColor.orangy,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
