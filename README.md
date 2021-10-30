@@ -23,6 +23,13 @@ programs are :
 2. To reduce the proportion of people who are suffering from obesity and
 underweight.
 
+## Data Privacy and security
+All the information will be stored locally and will be encrypted and no advertisement using users data.
+We respect the data privacy matter very much and we'll act accordingly.
+There will be option for online backup but that's totally up to users.
+
+
+
 ## Conclusion:
 Our Application offers the proper guidelines on healthier choices of foods and
 also proper gymnastic or physical activities. Users' data will be used to personalise their
@@ -34,4 +41,6 @@ will be able to guide them through their dedication and as we can see the usabil
 this application is enormous. We've thus named it AthLean.
 
 ## This application is currently underdevelopment.
-All copyrights go to Team AthLean.
+[Currently All copyrights go to Team AthLean. Your handle will be mentioned if you contribute to this project and if we add it.]
+### This is an open-source project.
+
