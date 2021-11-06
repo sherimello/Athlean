@@ -42,5 +42,5 @@ this application is enormous. We've thus named it AthLean.
 
 ## This application is currently underdevelopment.
 [Currently All copyrights go to Team AthLean. Your handle will be mentioned if you contribute to this project and if we add it.]
-### This is an open-source project.
+
 
