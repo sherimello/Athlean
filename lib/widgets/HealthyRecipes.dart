@@ -247,7 +247,7 @@ class HealthyRecipe extends StatelessWidget {
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
