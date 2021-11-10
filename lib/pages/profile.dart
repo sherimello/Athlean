@@ -1,5 +1,6 @@
-import 'package:athlean/widgets/color.dart';
 import 'package:athlean/widgets/home_progress_card.dart';
+import 'package:athlean/widgets/profile_header_user_info_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class profile extends StatefulWidget {
@@ -35,14 +36,31 @@ class _profileState extends State<profile> {
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container(
-                      height: MediaQuery.of(context).padding.top * .5,
-                      decoration: new BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(19),
-                            topRight: Radius.circular(19)),
-                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                        // height: MediaQuery.of(context).padding.top * .5,
+                        height: MediaQuery.of(context).padding.top,
+                        width: double.infinity,
+                        child: Center(
+                          child: Text(
+                            'health profile',
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        decoration: new BoxDecoration(
+                          color: Colors.white.withOpacity(.5),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(19),
+                              topRight: Radius.circular(19),
+                              bottomLeft: Radius.circular(19),
+                              bottomRight: Radius.circular(19)),
+                        )),
+                  ),
                 )
               ]),
             ),
@@ -57,83 +75,74 @@ class _profileState extends State<profile> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(19, 7, 19, 19),
-                        child: Text(
-                          'sheriMello',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontSize: 23,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black,
-                          ),
+                        padding: const EdgeInsets.fromLTRB(19, 7, 19, 7),
+                        child: Row(
+                          children: [
+                            Text(
+                              'sheriMello',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 19,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                              ),
+                            ),
+                            new profile_header_user_info_text(
+                                ("(21y)"), 7, 7, 7, 7, 15, FontStyle.normal),
+                          ],
                         ),
                       ),
+                      new profile_header_user_info_text('shrobinas@xmail.moc',
+                          19, 0, 19, 3, 15, FontStyle.italic),
+                      new profile_header_user_info_text(
+                          '01XXXXXXXXX', 19, 0, 19, 3, 15, FontStyle.italic),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
+                        padding: const EdgeInsets.all(19),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(black77),
-                            new home_progress_card(black66),
-                            new home_progress_card(black55),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 7.0),
+                              child: Icon(
+                                Icons.add_task_outlined,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              'stats',
+                              style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.black,
+                              ),
+                            ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
+                        padding: const EdgeInsets.only(bottom: 9),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(black77),
-                            new home_progress_card(black66),
-                            new home_progress_card(black55),
+                            //these card are health related info cards with progress indicators...
+                            //the class receives a color for card bg and progress color,
+                            // a text as the card title and lastly a progress of the respective action...
+                            new home_progress_card(
+                                Colors.cyan, 'BMI\nProgress', 60),
+                            new home_progress_card(
+                                Colors.orangeAccent, 'Diet\nProgress', 20),
+                            new home_progress_card(Colors.deepPurpleAccent,
+                                'Workout\nProgress', 34.6),
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            new home_progress_card(black77),
-                            new home_progress_card(black66),
-                            new home_progress_card(black55),
-                          ],
+                      //this tag is a joke...it's here just to make the UI scrollable. #asthetics XD
+                      Opacity(
+                        opacity: 0,
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height - MediaQuery.of(context).size.width * .2,
+                          width: double.infinity,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            new home_progress_card(black77),
-                            new home_progress_card(black66),
-                            new home_progress_card(black55),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            new home_progress_card(black77),
-                            new home_progress_card(black66),
-                            new home_progress_card(black55),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            new home_progress_card(black77),
-                            new home_progress_card(black66),
-                            new home_progress_card(black55),
-                          ],
-                        ),
-                      ),
+                      )
                     ],
                   ),
                 ),

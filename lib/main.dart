@@ -1,4 +1,5 @@
 import 'package:athlean/pages/login&reg.dart';
+import 'package:athlean/pages/profile.dart';
 import 'package:athlean/widgets/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new login()
+      // body: new login()
+      body: new profile()
     );
   }
 }
