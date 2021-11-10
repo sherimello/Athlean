@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "803778631341",
+    "project_id": "athlean-ee849",
+    "storage_bucket": "athlean-ee849.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803778631341:android:9259db3a012d43f8fa1824",
+        "android_client_info": {
+          "package_name": "com.example.athlean"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803778631341-lh3f82tkoef205720o67ud7b8nqu956u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs3IgpjAVFvhhWBa3jmlGiVcFpeheFGYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803778631341-lh3f82tkoef205720o67ud7b8nqu956u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

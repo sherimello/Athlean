@@ -16,7 +16,7 @@ class _home_progress_cardState extends State<home_progress_card> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * .37,
+      // height: MediaQuery.of(context).size.width * .37,
       width: MediaQuery.of(context).size.width * .29,
       decoration: new BoxDecoration(
         color: widget.color.withOpacity(.5),
