@@ -9,6 +9,7 @@ class Reg_fields extends StatefulWidget {
 
 class _Reg_fieldsState extends State<Reg_fields> {
 
+  String userName = "";
   String userEmail = "";
   String userPassword = "";
 
@@ -25,6 +26,9 @@ class _Reg_fieldsState extends State<Reg_fields> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextField(
+                onChanged: (value) {
+                  userName = value;
+                },
                 decoration: new InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(width: 1.5, color: Colors.black54),
@@ -136,6 +140,8 @@ class _Reg_fieldsState extends State<Reg_fields> {
                               email: userEmail,
                               password: userPassword,
                             );
+                            // await newUser.user!.updateDisplayName(userName);
+                            await newUser.user!.updateProfile(displayName: userName);
                             Navigator.of(context).pushNamed('/home');
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
