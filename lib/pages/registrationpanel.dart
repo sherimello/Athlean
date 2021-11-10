@@ -140,8 +140,7 @@ class _Reg_fieldsState extends State<Reg_fields> {
                               email: userEmail,
                               password: userPassword,
                             );
-                            // await newUser.user!.updateDisplayName(userName);
-                            await userCredential.user!.updateProfile(displayName: userName);
+                            await userCredential.user!.updateDisplayName(userName);
                             Navigator.of(context).pushNamed('/home');
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
