@@ -135,13 +135,13 @@ class _Reg_fieldsState extends State<Reg_fields> {
                       child: GestureDetector(
                         onTap: () async {
                           try {
-                            UserCredential newUser =
+                            UserCredential userCredential =
                                 await auth.createUserWithEmailAndPassword(
                               email: userEmail,
                               password: userPassword,
                             );
                             // await newUser.user!.updateDisplayName(userName);
-                            await newUser.user!.updateProfile(displayName: userName);
+                            await userCredential.user!.updateProfile(displayName: userName);
                             Navigator.of(context).pushNamed('/home');
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
