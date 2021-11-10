@@ -35,11 +35,14 @@ dev_dependencies:
   flutter_native_splash: ^1.2.4
   flutter_test:
     sdk: flutter
-flutter_native_splash:
-  ios: true
-  android: true
-  color: "#ffffff"
-  image: assets/images/athleanLogo.png
+
+#flutter_native_splash:
+#  ios: true
+#  android: true
+#  color: "#ffffff"
+#  image: assets/images/athleanLogo.png
+
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
