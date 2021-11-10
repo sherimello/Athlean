@@ -45,7 +45,7 @@ class _loginState extends State<login> {
                         MediaQuery.of(context).padding.top * 2,
                     color: Colors.white,
                     child:
-                    //this UI is contains the fiels in the login page
+                    //this UI contains the fields in the login page
                     new login_fields()
                   )
                 ],
