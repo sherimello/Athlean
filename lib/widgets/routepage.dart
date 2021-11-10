@@ -1,4 +1,8 @@
-import 'package:athlean/pages/home.dart';
+import 'package:athlean/main.dart';
+import 'package:athlean/pages/profile.dart';
+import 'package:athlean/pages/Homepage.dart';
+import 'package:athlean/widgets/HealthyRecipes.dart';
+import 'package:athlean/widgets/desc_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/login&reg.dart';
@@ -13,7 +17,13 @@ class RoutePage {
       case '/registration':
         return MaterialPageRoute(builder: (_) => Reg_fields());
       case '/home':
-        return MaterialPageRoute(builder: (_) => home());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
+      case '/profile':
+        return MaterialPageRoute(builder: (_) => profile());
+      case '/recipes':
+        return MaterialPageRoute(builder: (_) => HealthyRecipe(title: "Healthy Recipes"));
+      case '/meditation':
+        return MaterialPageRoute(builder: (_) => DetailsScreen(title: "Sleep and Meditation"));
       default:
         return _errorRoute();
     }

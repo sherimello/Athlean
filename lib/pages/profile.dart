@@ -2,14 +2,14 @@ import 'package:athlean/widgets/color.dart';
 import 'package:athlean/widgets/home_progress_card.dart';
 import 'package:flutter/material.dart';
 
-class home extends StatefulWidget {
-  const home({Key? key}) : super(key: key);
+class profile extends StatefulWidget {
+  const profile({Key? key}) : super(key: key);
 
   @override
-  _homeState createState() => _homeState();
+  _profileState createState() => _profileState();
 }
 
-class _homeState extends State<home> {
+class _profileState extends State<profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +73,9 @@ class _homeState extends State<home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(CustomColor.black77),
-                            new home_progress_card(CustomColor.black66),
-                            new home_progress_card(CustomColor.black55),
+                            new home_progress_card(black77),
+                            new home_progress_card(black66),
+                            new home_progress_card(black55),
                           ],
                         ),
                       ),
@@ -84,9 +84,9 @@ class _homeState extends State<home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(CustomColor.black77),
-                            new home_progress_card(CustomColor.black66),
-                            new home_progress_card(CustomColor.black55),
+                            new home_progress_card(black77),
+                            new home_progress_card(black66),
+                            new home_progress_card(black55),
                           ],
                         ),
                       ),
@@ -95,9 +95,9 @@ class _homeState extends State<home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(CustomColor.black77),
-                            new home_progress_card(CustomColor.black66),
-                            new home_progress_card(CustomColor.black55),
+                            new home_progress_card(black77),
+                            new home_progress_card(black66),
+                            new home_progress_card(black55),
                           ],
                         ),
                       ),
@@ -106,9 +106,9 @@ class _homeState extends State<home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(CustomColor.black77),
-                            new home_progress_card(CustomColor.black66),
-                            new home_progress_card(CustomColor.black55),
+                            new home_progress_card(black77),
+                            new home_progress_card(black66),
+                            new home_progress_card(black55),
                           ],
                         ),
                       ),
@@ -117,9 +117,9 @@ class _homeState extends State<home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(CustomColor.black77),
-                            new home_progress_card(CustomColor.black66),
-                            new home_progress_card(CustomColor.black55),
+                            new home_progress_card(black77),
+                            new home_progress_card(black66),
+                            new home_progress_card(black55),
                           ],
                         ),
                       ),
@@ -128,9 +128,9 @@ class _homeState extends State<home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            new home_progress_card(CustomColor.black77),
-                            new home_progress_card(CustomColor.black66),
-                            new home_progress_card(CustomColor.black55),
+                            new home_progress_card(black77),
+                            new home_progress_card(black66),
+                            new home_progress_card(black55),
                           ],
                         ),
                       ),

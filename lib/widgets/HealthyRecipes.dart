@@ -24,8 +24,8 @@ class HealthyRecipe extends StatelessWidget {
             decoration: BoxDecoration(
               color: kGreenColor,
               image: DecorationImage(
-                image: AssetImage("assets/images/salad.png"),
-                fit: BoxFit.fitWidth,
+                image: AssetImage("assets/images/healthy_recipe_bg.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -44,23 +44,24 @@ class HealthyRecipe extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .headline4!
-                          .copyWith(fontWeight: FontWeight.w900,color: Colors.black87),
+                          .copyWith(fontWeight: FontWeight.w900,color: Colors.white),
                     ),
                     SizedBox(height: 10),
                     Text(
                       "Every Calorie Matters",
-                      style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+                      style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
                     ),
                     SizedBox(height: 10),
                     SizedBox(
                       width: size.width * .6, // it just take 60% of total width
                       child: Text(
                         "Live happier and healthier by eating healthy food",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                     SizedBox(
-                      width: size.width * .7, // it just take the 50% width
+                      // width: size.width * .7, // it just take the 70% width
+                      width: size.width * 1, // it just take the 70% width
                       child: SearchBar(),
                     ),
                     Wrap(
@@ -290,7 +291,7 @@ class SeassionCard extends StatelessWidget {
                 offset: Offset(0, 17),
                 blurRadius: 23,
                 spreadRadius: -13,
-                color: kShadowColor,
+                color: Colors.black,
               ),
             ],
           ),
@@ -317,8 +318,10 @@ class SeassionCard extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "$whatisit $seassionNum",
-                      style: Theme.of(context).textTheme.subtitle1,
+                      "$whatisit$seassionNum",
+                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        fontWeight: FontWeight.bold
+                      ),
                     )
                   ],
                 ),

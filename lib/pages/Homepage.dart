@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import '../widgets/color.dart';
-import '../widgets/desc_screen.dart';
+
 import '../widgets/bottomnavbar.dart';
 import '../widgets/categorycard.dart';
 import '../widgets/searchbar.dart';
-import '../widgets/HealthyRecipes.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -30,29 +27,39 @@ class HomeScreen extends StatelessWidget {
           ),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              // padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.fromLTRB(19, 19, 19, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Align(
                     alignment: Alignment.topRight,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 52,
-                      width: 52,
-                      decoration: BoxDecoration(
-                        color: kBlueColor,
-                        shape: BoxShape.circle,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/profile');
+                      },
+                      splashColor: Colors.white,
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 52,
+                        width: 52,
+                        decoration: BoxDecoration(
+                          // color: kBlueColor,
+                          color: Colors.black,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
+                        // child: SvgPicture.asset("assets/icons/menu.svg"),
                       ),
-                      child: SvgPicture.asset("assets/icons/menu.svg"),
                     ),
                   ),
                   Text(
                     "Good Morning \nMr X",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4!
-                        .copyWith(fontWeight: FontWeight.w900),
+                    style: Theme.of(context).textTheme.headline4!.copyWith(
+                        fontWeight: FontWeight.w900, color: Colors.black),
                   ),
                   SearchBar(),
                   Expanded(
@@ -66,12 +73,7 @@ class HomeScreen extends StatelessWidget {
                           title: "Healthy Recipes",
                           svgSrc: "assets/icons/Hamburger.svg",
                           press: () {
-                            Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return HealthyRecipe(title: "Healthy Recipes");
-                            }),
-                          );
+                            Navigator.of(context).pushNamed('/recipes');
                           },
                         ),
                         CategoryCard(
@@ -83,12 +85,7 @@ class HomeScreen extends StatelessWidget {
                           title: "Sleep and Meditation",
                           svgSrc: "assets/icons/Meditation.svg",
                           press: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return DetailsScreen(title: "Sleep and Meditation");
-                              }),
-                            );
+                            Navigator.of(context).pushNamed('/meditation');
                           },
                         ),
                         CategoryCard(
