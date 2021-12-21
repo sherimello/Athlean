@@ -16,7 +16,7 @@ class _home_progress_cardState extends State<home_progress_card> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * .37,
+      // height: MediaQuery.of(context).size.width * .40,
       width: MediaQuery.of(context).size.width * .29,
       decoration: new BoxDecoration(
         color: widget.color.withOpacity(.5),
@@ -41,7 +41,7 @@ class _home_progress_cardState extends State<home_progress_card> {
             Padding(
                 padding: const EdgeInsets.all(17.0),
                 child: new CircularPercentIndicator(
-                  radius: 71,
+                  radius: 60,
                   lineWidth: 7.0,
                   animation: true,
                   animateFromLastPercent: false,
