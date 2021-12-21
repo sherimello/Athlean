@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                           title: "Sleep and Meditation",
                           svgSrc: "assets/icons/Meditation.svg",
                           press: () {
-                            Navigator.of(context).pushNamed('/meditation');
+                            Navigator.of(context).pushNamed('/bmi_input');
                           },
                         ),
                         CategoryCard(
