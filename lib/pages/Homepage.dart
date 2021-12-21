@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/bottomnavbar.dart';
 import '../widgets/categorycard.dart';
 import '../widgets/searchbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+
     var size = MediaQuery.of(context)
         .size; //this gonna give us total height and with of our device
     return Scaffold(
@@ -57,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Good Morning \nMr X",
+                    "Good Morning \nMr ${user?.displayName}",
                     style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontWeight: FontWeight.w900, color: Colors.black),
                   ),
