@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import '../widgets/color.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+class Reg_fields extends StatefulWidget {
+  @override
+  State<Reg_fields> createState() => _Reg_fieldsState();
+}
 
-class Reg_fields extends StatelessWidget {
-  const Reg_fields({Key? key}) : super(key: key);
+class _Reg_fieldsState extends State<Reg_fields> {
+
+  String userEmail = "";
+  String userPassword = "";
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +32,7 @@ class Reg_fields extends StatelessWidget {
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(width: 1.5, color: orangy),
                     ),
-
-                    labelText: 'username',
+                    labelText: 'Full name',
                     hintStyle: TextStyle(
                         color: Colors.black38, fontWeight: FontWeight.w600),
                     labelStyle: TextStyle(
@@ -39,6 +47,9 @@ class Reg_fields extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextField(
+                onChanged: (value) {
+                  userEmail = value;
+                },
                 decoration: new InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(width: 1.5, color: Colors.black54),
@@ -62,6 +73,9 @@ class Reg_fields extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: TextField(
+                onChanged: (value) {
+                  userPassword = value;
+                },
                 decoration: new InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(width: 1.5, color: Colors.black54),
@@ -90,7 +104,7 @@ class Reg_fields extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(13, 8, 13, 8),
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.of(context).pushNamed('/login');
                       },
                       child: Text(
@@ -114,12 +128,33 @@ class Reg_fields extends StatelessWidget {
                     margin: EdgeInsets.all(5),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(8, 8, 13, 8),
-                      child: Text(
-                        "  Register  ",
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: orangy,
-                          fontWeight: FontWeight.bold,
+                      child: GestureDetector(
+                        onTap: () async {
+                          try {
+                            UserCredential newUser =
+                                await auth.createUserWithEmailAndPassword(
+                              email: userEmail,
+                              password: userPassword,
+                            );
+                            Navigator.of(context).pushNamed('/home');
+                          } on FirebaseAuthException catch (e) {
+                            if (e.code == 'weak-password') {
+                              print('The password provided is too weak.');
+                            } else if (e.code == 'email-already-in-use') {
+                              print(
+                                  'The account already exists for that email.');
+                            }
+                          } catch (e) {
+                            print(e);
+                          }
+                        },
+                        child: Text(
+                          "  Register  ",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: orangy,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
