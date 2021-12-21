@@ -87,16 +87,18 @@ class HomeScreen extends StatelessWidget {
                           press: () {},
                         ),
                         CategoryCard(
-                          title: "Sleep and Meditation",
+                          title: "BMI Calculator",
                           svgSrc: "assets/icons/Meditation.svg",
                           press: () {
                             Navigator.of(context).pushNamed('/bmi_input');
                           },
                         ),
                         CategoryCard(
-                          title: "Diet Plan",
+                          title: "Body Fat Calculator",
                           svgSrc: "assets/icons/yoga.svg",
-                          press: () {},
+                          press: () {
+                            Navigator.of(context).pushNamed('/fat_input');
+                          },
                         ),
                       ],
                     ),

@@ -4,6 +4,7 @@ import 'package:athlean/widgets/HealthyRecipes.dart';
 import 'package:athlean/widgets/desc_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:athlean/pages/bmi_input_page.dart';
+import 'package:athlean/pages/fat_input_page.dart';
 
 import '../pages/login&reg.dart';
 import '../pages/registrationpanel.dart';
@@ -21,7 +22,9 @@ class RoutePage {
       case '/profile':
         return MaterialPageRoute(builder: (_) => profile());
       case '/bmi_input':
-        return MaterialPageRoute(builder: (_) => InputPage());
+        return MaterialPageRoute(builder: (_) => BmiInputPage());
+      case '/fat_input':
+        return MaterialPageRoute(builder: (_) => FatInputPage());
       case '/recipes':
         return MaterialPageRoute(builder: (_) => HealthyRecipe(title: "Healthy Recipes"));
       case '/meditation':

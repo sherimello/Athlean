@@ -6,7 +6,7 @@ const kInactiveCardColour = Color(0xFF607D8B);
 const kBottomContainerColour = Color(0xFF607D8B);
 
 const kLabelTextStyle = TextStyle(
-  fontSize: 18.0,
+  fontSize: 22.0,
   color: Color(0xFF212121),
 );
 

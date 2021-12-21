@@ -3,33 +3,35 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:athlean/widgets/icon_content.dart';
 import 'package:athlean/widgets/reusable_card.dart';
 import 'package:athlean/constants.dart';
-import 'bmi_result_page.dart';
+import 'fat_result_page.dart';
 import 'package:athlean/widgets/bottom_button.dart';
 import 'package:athlean/widgets/round_icon_button.dart';
-import 'package:athlean/bmi_calculation.dart';
+import 'package:athlean/fat_calculation.dart';
 
 enum Gender {
   male,
   female,
 }
 
-class BmiInputPage extends StatefulWidget {
+class FatInputPage extends StatefulWidget {
   @override
-  _BmiInputPageState createState() => _BmiInputPageState();
+  _FatInputPageState createState() => _FatInputPageState();
 }
 
-class _BmiInputPageState extends State<BmiInputPage> {
+class _FatInputPageState extends State<FatInputPage> {
   Gender selectedGender = Gender.male;
   int height = 180;
   int weight = 60;
   int age = 20;
+  int waist = 96;
+  int neck = 50;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFCFD8DC),
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text('BODY FAT CALCULATOR'),
         backgroundColor: Color(0xFFCFD8DC),
       ),
       body: Column(
@@ -37,41 +39,41 @@ class _BmiInputPageState extends State<BmiInputPage> {
         children: <Widget>[
           Expanded(
               child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: ReusableCard(
-                      onPress: () {
-                        setState(() {
-                          selectedGender = Gender.male;
-                        });
-                      },
-                      colour: selectedGender == Gender.male
-                          ? kActiveCardColour
-                          : kInactiveCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE',
-                      ),
-                    ),
+            children: <Widget>[
+              Expanded(
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                  colour: selectedGender == Gender.male
+                      ? kActiveCardColour
+                      : kInactiveCardColour,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: 'MALE',
                   ),
-                  Expanded(
-                    child: ReusableCard(
-                      onPress: () {
-                        setState(() {
-                          selectedGender = Gender.female;
-                        });
-                      },
-                      colour: selectedGender == Gender.female
-                          ? kActiveCardColour
-                          : kInactiveCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
-                    ),
+                ),
+              ),
+              Expanded(
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  colour: selectedGender == Gender.female
+                      ? kActiveCardColour
+                      : kInactiveCardColour,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
                   ),
-                ],
-              )),
+                ),
+              ),
+            ],
+          )),
           Expanded(
             child: ReusableCard(
               colour: kActiveCardColour,
@@ -104,9 +106,9 @@ class _BmiInputPageState extends State<BmiInputPage> {
                       thumbColor: Color(0xFFEB1555),
                       overlayColor: Color(0x29EB1555),
                       thumbShape:
-                      RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
                       overlayShape:
-                      RoundSliderOverlayShape(overlayRadius: 30.0),
+                          RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
                     child: Slider(
                       value: height.toDouble(),
@@ -133,12 +135,23 @@ class _BmiInputPageState extends State<BmiInputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'WEIGHT',
+                          'WAIST',
                           style: kLabelTextStyle,
                         ),
-                        Text(
-                          weight.toString(),
-                          style: kNumberTextStyle,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              waist.toString(),
+                              style: kNumberTextStyle,
+                            ),
+                            Text(
+                              'cm',
+                              style: kLabelTextStyle,
+                            )
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -147,7 +160,7 @@ class _BmiInputPageState extends State<BmiInputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
                                   setState(() {
-                                    weight--;
+                                    waist--;
                                   });
                                 }),
                             SizedBox(
@@ -157,7 +170,7 @@ class _BmiInputPageState extends State<BmiInputPage> {
                               icon: FontAwesomeIcons.plus,
                               onPressed: () {
                                 setState(() {
-                                  weight++;
+                                  waist++;
                                 });
                               },
                             ),
@@ -174,13 +187,25 @@ class _BmiInputPageState extends State<BmiInputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'AGE',
+                          'NECK',
                           style: kLabelTextStyle,
                         ),
-                        Text(
-                          age.toString(),
-                          style: kNumberTextStyle,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              neck.toString(),
+                              style: kNumberTextStyle,
+                            ),
+                            Text(
+                              'cm',
+                              style: kLabelTextStyle,
+                            )
+                          ],
                         ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -188,8 +213,8 @@ class _BmiInputPageState extends State<BmiInputPage> {
                               icon: FontAwesomeIcons.minus,
                               onPressed: () {
                                 setState(
-                                      () {
-                                    age--;
+                                  () {
+                                    neck--;
                                   },
                                 );
                               },
@@ -201,7 +226,7 @@ class _BmiInputPageState extends State<BmiInputPage> {
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
                                   setState(() {
-                                    age++;
+                                    neck++;
                                   });
                                 })
                           ],
@@ -216,16 +241,15 @@ class _BmiInputPageState extends State<BmiInputPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
-              BmiCalculatorBrain calc =
-              BmiCalculatorBrain(height: height, weight: weight);
+              FatCalculatorBrain calc =
+                  FatCalculatorBrain(height: height, difference: waist - neck, gender: selectedGender.index);
 
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BmiResultsPage(
-                    bmiResult: calc.calculateBMI(),
+                  builder: (context) => FatResultsPage(
+                    fatResult: calc.calculateFat(),
                     resultText: calc.getResult(),
-                    interpretation: calc.getInterpretation(),
                   ),
                 ),
               );

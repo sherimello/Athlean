@@ -3,20 +3,19 @@ import 'package:athlean/constants.dart';
 import 'package:athlean/widgets/reusable_card.dart';
 import 'package:athlean/widgets/bottom_button.dart';
 
-class BmiResultsPage extends StatelessWidget {
-  BmiResultsPage(
-      {this.interpretation = "", this.bmiResult = "", this.resultText = ""});
+class FatResultsPage extends StatelessWidget {
+  FatResultsPage(
+      {this.fatResult = "", this.resultText = ""});
 
-  final String bmiResult;
+  final String fatResult;
   final String resultText;
-  final String interpretation;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFCFD8DC),
       appBar: AppBar(
-        title: Text('BMI RESULT'),
+        title: Text('BODY FAT RESULT'),
         backgroundColor: Color(0xFFCFD8DC),
       ),
       body: Column(
@@ -45,14 +44,23 @@ class BmiResultsPage extends StatelessWidget {
                     resultText.toUpperCase(),
                     style: kResultTextStyle,
                   ),
-                  Text(
-                    bmiResult,
-                    style: kBMITextStyle,
-                  ),
-                  Text(
-                    interpretation,
-                    textAlign: TextAlign.center,
-                    style: kBodyTextStyle,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        fatResult,
+                        style: kBMITextStyle,
+                      ),
+                      Text(
+                        '%',
+                        style: TextStyle(
+                          fontSize: 50.0,
+                          color: Color(0xFF212121),
+                        ),
+                      )
+                    ],
                   ),
                 ],
               ),
