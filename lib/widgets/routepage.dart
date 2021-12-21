@@ -1,16 +1,17 @@
-import 'package:athlean/main.dart';
 import 'package:athlean/pages/profile.dart';
 import 'package:athlean/pages/Homepage.dart';
 import 'package:athlean/widgets/HealthyRecipes.dart';
 import 'package:athlean/widgets/desc_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:athlean/pages/bmi_input_page.dart';
+import 'package:athlean/pages/fat_input_page.dart';
 
 import '../pages/login&reg.dart';
 import '../pages/registrationpanel.dart';
 
 class RoutePage {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
+    // final args = settings.arguments;
     switch (settings.name) {
       case '/login':
         return MaterialPageRoute(builder: (_) => login());
@@ -20,6 +21,10 @@ class RoutePage {
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case '/profile':
         return MaterialPageRoute(builder: (_) => profile());
+      case '/bmi_input':
+        return MaterialPageRoute(builder: (_) => BmiInputPage());
+      case '/fat_input':
+        return MaterialPageRoute(builder: (_) => FatInputPage());
       case '/recipes':
         return MaterialPageRoute(builder: (_) => HealthyRecipe(title: "Healthy Recipes"));
       case '/meditation':
