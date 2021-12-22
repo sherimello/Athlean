@@ -65,7 +65,7 @@ class _Reg_fieldsState extends State<Reg_fields> {
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(width: 1.5, color: orangy),
                       ),
-                      hintText: 'sherimello@xyz.com',
+                      hintText: 'athlean@xyz.com',
                       labelText: 'email',
                       hintStyle: TextStyle(
                           color: Colors.black38, fontWeight: FontWeight.w600),

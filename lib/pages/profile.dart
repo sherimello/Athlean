@@ -7,6 +7,8 @@ import 'package:athlean/widgets/caloriegoalinput.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:athlean/widgets/calorieburngoal.dart';
 
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+double intake = 100;
 class profile extends StatefulWidget {
   const profile({Key? key}) : super(key: key);
 
@@ -15,11 +17,24 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
+
+  Future getIntake() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    var calorieIntake = await _firestore.collection('calintake').doc(
+        user?.email).get();
+    if (calorieIntake.exists) {
+      Map<String, dynamic>? data = calorieIntake.data();
+      setState(() {
+        intake = double.parse(data?['intake']);
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
-
+    getIntake();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -134,9 +149,9 @@ class _profileState extends State<profile> {
                             //the class receives a color for card bg and progress color,
                             // a text as the card title and lastly a progress of the respective action...
                             new home_progress_card(
-                                Colors.cyan, 'Calorie\nIntake', 70),
+                                Colors.cyan, 'Calorie\nIntake', intake),
                             new home_progress_card(
-                                Colors.orangeAccent, 'Diet\nProgress', 20),
+                                Colors.orangeAccent, 'Calorie\nBurn', 20),
                             new home_progress_card(Colors.deepPurpleAccent,
                                 'Workout\nProgress', 34.6),
                           ],
