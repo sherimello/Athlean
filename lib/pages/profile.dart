@@ -3,6 +3,9 @@ import 'package:athlean/widgets/profile_header_user_info_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:athlean/widgets/caloriegoalinput.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:athlean/widgets/calorieburngoal.dart';
 
 class profile extends StatefulWidget {
   const profile({Key? key}) : super(key: key);
@@ -96,8 +99,8 @@ class _profileState extends State<profile> {
                           ],
                         ),
                       ),
-                      new profile_header_user_info_text("${user?.email}",
-                          19, 0, 19, 3, 15, FontStyle.italic),
+                      new profile_header_user_info_text(
+                          "${user?.email}", 19, 0, 19, 3, 15, FontStyle.italic),
                       // new profile_header_user_info_text(
                       //     '01XXXXXXXXX', 19, 0, 19, 3, 15, FontStyle.italic),
                       Padding(
@@ -131,7 +134,7 @@ class _profileState extends State<profile> {
                             //the class receives a color for card bg and progress color,
                             // a text as the card title and lastly a progress of the respective action...
                             new home_progress_card(
-                                Colors.cyan, 'BMI\nProgress', 60),
+                                Colors.cyan, 'Calorie\nIntake', 70),
                             new home_progress_card(
                                 Colors.orangeAccent, 'Diet\nProgress', 20),
                             new home_progress_card(Colors.deepPurpleAccent,
@@ -139,11 +142,68 @@ class _profileState extends State<profile> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 9),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            //these card are health related info cards with progress indicators...
+                            //the class receives a color for card bg and progress color,
+                            // a text as the card title and lastly a progress of the respective action...
+                            ElevatedButton(
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (context) => SingleChildScrollView(
+                                    child: Container(
+                                      padding: EdgeInsets.only(
+                                          bottom: MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom),
+                                      child: AddCalorieGoal(),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text('Set Calorie Intake Goal'),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.teal)),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (context) => SingleChildScrollView(
+                                    child: Container(
+                                      padding: EdgeInsets.only(
+                                          bottom: MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom),
+                                      child: AddBurnGoal(),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text('Set Calorie Burn Goal'),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.teal),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                       //this tag is a joke...it's here just to make the UI scrollable. #asthetics XD
                       Opacity(
                         opacity: 0,
                         child: SizedBox(
-                          height: MediaQuery.of(context).size.height - MediaQuery.of(context).size.width * .2,
+                          height: MediaQuery.of(context).size.height -
+                              MediaQuery.of(context).size.width * .2,
                           width: double.infinity,
                         ),
                       )
