@@ -2,6 +2,7 @@ import 'package:athlean/widgets/home_progress_card.dart';
 import 'package:athlean/widgets/profile_header_user_info_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class profile extends StatefulWidget {
   const profile({Key? key}) : super(key: key);
@@ -13,6 +14,9 @@ class profile extends StatefulWidget {
 class _profileState extends State<profile> {
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -79,7 +83,7 @@ class _profileState extends State<profile> {
                         child: Row(
                           children: [
                             Text(
-                              'sheriMello',
+                              "${user?.displayName}",
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 19,
@@ -92,10 +96,10 @@ class _profileState extends State<profile> {
                           ],
                         ),
                       ),
-                      new profile_header_user_info_text('shrobinas@xmail.moc',
+                      new profile_header_user_info_text("${user?.email}",
                           19, 0, 19, 3, 15, FontStyle.italic),
-                      new profile_header_user_info_text(
-                          '01XXXXXXXXX', 19, 0, 19, 3, 15, FontStyle.italic),
+                      // new profile_header_user_info_text(
+                      //     '01XXXXXXXXX', 19, 0, 19, 3, 15, FontStyle.italic),
                       Padding(
                         padding: const EdgeInsets.all(19),
                         child: Row(
