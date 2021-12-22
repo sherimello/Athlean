@@ -185,7 +185,7 @@ class _profileState extends State<profile> {
                               style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all<Color>(
-                                          Colors.teal)),
+                                          Colors.cyan)),
                             ),
                             ElevatedButton(
                               onPressed: () {
@@ -207,7 +207,7 @@ class _profileState extends State<profile> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Colors.teal),
+                                        Colors.cyan),
                               ),
                             )
                           ],

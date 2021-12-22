@@ -84,7 +84,9 @@ class HomeScreen extends StatelessWidget {
                         CategoryCard(
                           title: "Workout Plan",
                           svgSrc: "assets/icons/Excrecises.svg",
-                          press: () {},
+                          press: () {
+                            Navigator.of(context).pushNamed('/workout');
+                          },
                         ),
                         CategoryCard(
                           title: "BMI Calculator",
