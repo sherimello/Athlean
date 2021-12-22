@@ -2,7 +2,13 @@ import 'package:athlean/widgets/home_progress_card.dart';
 import 'package:athlean/widgets/profile_header_user_info_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:athlean/widgets/caloriegoalinput.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:athlean/widgets/calorieburngoal.dart';
 
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+double intake = 100;
 class profile extends StatefulWidget {
   const profile({Key? key}) : super(key: key);
 
@@ -11,8 +17,24 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
+
+  Future getIntake() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    var calorieIntake = await _firestore.collection('calintake').doc(
+        user?.email).get();
+    if (calorieIntake.exists) {
+      Map<String, dynamic>? data = calorieIntake.data();
+      setState(() {
+        intake = double.parse(data?['intake']);
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    getIntake();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -79,7 +101,7 @@ class _profileState extends State<profile> {
                         child: Row(
                           children: [
                             Text(
-                              'sheriMello',
+                              "${user?.displayName}",
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 19,
@@ -92,10 +114,10 @@ class _profileState extends State<profile> {
                           ],
                         ),
                       ),
-                      new profile_header_user_info_text('shrobinas@xmail.moc',
-                          19, 0, 19, 3, 15, FontStyle.italic),
                       new profile_header_user_info_text(
-                          '01XXXXXXXXX', 19, 0, 19, 3, 15, FontStyle.italic),
+                          "${user?.email}", 19, 0, 19, 3, 15, FontStyle.italic),
+                      // new profile_header_user_info_text(
+                      //     '01XXXXXXXXX', 19, 0, 19, 3, 15, FontStyle.italic),
                       Padding(
                         padding: const EdgeInsets.all(19),
                         child: Row(
@@ -127,11 +149,67 @@ class _profileState extends State<profile> {
                             //the class receives a color for card bg and progress color,
                             // a text as the card title and lastly a progress of the respective action...
                             new home_progress_card(
-                                Colors.cyan, 'BMI\nProgress', 60),
+                                Colors.cyan, 'Calorie\nIntake', intake),
                             new home_progress_card(
-                                Colors.orangeAccent, 'Diet\nProgress', 20),
+                                Colors.orangeAccent, 'Calorie\nBurn', 20),
                             new home_progress_card(Colors.deepPurpleAccent,
                                 'Workout\nProgress', 34.6),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 9),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            //these card are health related info cards with progress indicators...
+                            //the class receives a color for card bg and progress color,
+                            // a text as the card title and lastly a progress of the respective action...
+                            ElevatedButton(
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (context) => SingleChildScrollView(
+                                    child: Container(
+                                      padding: EdgeInsets.only(
+                                          bottom: MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom),
+                                      child: AddCalorieGoal(),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text('Set Calorie Intake Goal'),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.teal)),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (context) => SingleChildScrollView(
+                                    child: Container(
+                                      padding: EdgeInsets.only(
+                                          bottom: MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom),
+                                      child: AddBurnGoal(),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text('Set Calorie Burn Goal'),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.teal),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -139,7 +217,8 @@ class _profileState extends State<profile> {
                       Opacity(
                         opacity: 0,
                         child: SizedBox(
-                          height: MediaQuery.of(context).size.height - MediaQuery.of(context).size.width * .2,
+                          height: MediaQuery.of(context).size.height -
+                              MediaQuery.of(context).size.width * .2,
                           width: double.infinity,
                         ),
                       )
