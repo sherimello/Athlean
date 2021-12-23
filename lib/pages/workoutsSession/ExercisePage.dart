@@ -179,8 +179,7 @@ class Pushups extends StatelessWidget {
                                             bottom: MediaQuery.of(context)
                                                 .viewInsets
                                                 .bottom),
-                                        child: Text(
-                                            'Add necessary input fields here.'),
+                                        child: AddWorkout(),
                                       ),
                                     ),
                                   );
@@ -200,7 +199,7 @@ class Pushups extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(15.0, 12, 12, 0),
                           child: Text(
-                            'PushUps Variety',
+                            '$exerciseName Variety',
                             style: TextStyle(
                               fontSize: 19,
                               fontWeight: FontWeight.bold,
@@ -278,6 +277,59 @@ class Pushups extends StatelessWidget {
                 ],
               ),
             ]))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddWorkout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    String newWorkoutGoal = "";
+    return Container(
+      color: Color(0xff757575),
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(
+              'Workout Duration Time (minutes)',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30.0,
+                color: Colors.teal,
+              ),
+            ),
+            TextField(
+              autofocus: true,
+              textAlign: TextAlign.center,
+              onChanged: (newText) {
+                newWorkoutGoal = newText;
+              },
+            ),
+            FlatButton(
+              child: Text(
+                'Add',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              color: Colors.teal,
+              onPressed: () {
+                // Provider.of<TaskData>(context).addTask(newCalGoal);
+                print(newWorkoutGoal);
+              },
+            ),
           ],
         ),
       ),

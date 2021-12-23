@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:athlean/pages/workoutsSession/Pushup.dart';
+import 'package:athlean/pages/workoutsSession/ExercisePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:athlean/widgets/color.dart';

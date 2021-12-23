@@ -1,13 +1,13 @@
 import 'package:athlean/pages/profile.dart';
 import 'package:athlean/pages/Homepage.dart';
 import 'package:athlean/pages/workout.dart';
-import 'package:athlean/pages/workoutsSession/Pushup.dart';
+import 'package:athlean/pages/workoutsSession/ExercisePage.dart';
 import 'package:athlean/widgets/HealthyRecipes.dart';
 import 'package:athlean/widgets/desc_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:athlean/pages/bmi_input_page.dart';
 import 'package:athlean/pages/fat_input_page.dart';
-import '../pages/workoutsSession/Pushup.dart';
+import '../pages/workoutsSession/ExercisePage.dart';
 import '../pages/login&reg.dart';
 import '../pages/registrationpanel.dart';
 
