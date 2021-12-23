@@ -52,6 +52,13 @@ class AddCalorieGoal extends StatelessWidget {
                   'email' : user?.email,
                   'intake' : newCalGoal
                 });
+
+                // _firestore.collection('foodinput').add({
+                //   'time' : DateTime.now(),
+                //   'email': user?.email,
+                //   'name' : 'ricex',
+                //   'kcal': 40,
+                // });
                 Navigator.pop(context);
               },
             ),

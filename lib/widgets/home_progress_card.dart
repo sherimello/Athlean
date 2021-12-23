@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+String indic = "";
 class home_progress_card extends StatefulWidget {
   late Color color; //color of the card and the progress indicator
   var text; //title of the card
-  double progress; //progress of the progress indicator
+  double progress;
+  int flag;
+  //progress of the progress indicator
 
-  home_progress_card(this.color, this.text, this.progress);
+  home_progress_card(this.color, this.text, this.progress, this.flag);
 
   @override
   _home_progress_cardState createState() => _home_progress_cardState();
@@ -15,6 +18,10 @@ class home_progress_card extends StatefulWidget {
 class _home_progress_cardState extends State<home_progress_card> {
   @override
   Widget build(BuildContext context) {
+    if (widget.flag == 1)
+      indic = "hr";
+    else
+      indic = "%";
     return InkWell(
       child: Container(
         // height: MediaQuery.of(context).size.width * .37,
@@ -49,7 +56,7 @@ class _home_progress_cardState extends State<home_progress_card> {
                     animationDuration: 1200,
                     percent: widget.progress * .01,
                     backgroundColor: Colors.white,
-                    center: new Text((widget.progress).toString() + "%"),
+                    center: new Text((widget.progress).toStringAsFixed(1) + indic),
                     progressColor: widget.color,
                   )),
             ],
