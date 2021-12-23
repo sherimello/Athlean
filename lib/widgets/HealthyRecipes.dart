@@ -541,8 +541,8 @@ class SeassionCard extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      height: 42,
-                      width: 43,
+                      height: 40,
+                      width: 18,
                       decoration: BoxDecoration(
                         color: isDone ? kBlueColor : Colors.white,
                         shape: BoxShape.circle,

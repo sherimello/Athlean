@@ -16,7 +16,7 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
-    var name = "", cal = "kkk";
+    var name = "", cal = "";
     final TextEditingController _typeAheadController = TextEditingController();
 
     return Column(

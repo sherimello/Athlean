@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                     height: 30,
                   ),
                   Text(
-                    "Hello \nMr ${user?.displayName}",
+                    "Hello \n${user?.displayName}",
                     style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontWeight: FontWeight.w900, color: Colors.black),
                   ),
@@ -82,26 +82,40 @@ class HomeScreen extends StatelessWidget {
                       children: <Widget>[
                         CategoryCard(
                           title: "Food Log",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/Hamburger.svg",
+                          heightofimage: 100,
+                          widthofimage: 100,
                           press: () {
                             Navigator.of(context).pushNamed('/recipes');
                           },
                         ),
                         CategoryCard(
                           title: "Workout Log",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/Excrecises.svg",
-                          press: () {},
+                          heightofimage: 100,
+                          widthofimage: 100,
+                          press: () {
+                            Navigator.of(context).pushNamed('/workout');
+                          },
                         ),
                         CategoryCard(
                           title: "BMI Calculator",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/Meditation.svg",
+                          heightofimage: 100,
+                          widthofimage: 100,
                           press: () {
                             Navigator.of(context).pushNamed('/bmi_input');
                           },
                         ),
                         CategoryCard(
                           title: "Body Fat Calculator",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/yoga.svg",
+                          heightofimage: 100,
+                          widthofimage: 100,
                           press: () {
                             Navigator.of(context).pushNamed('/fat_input');
                           },
