@@ -81,14 +81,14 @@ class HomeScreen extends StatelessWidget {
                       mainAxisSpacing: 20,
                       children: <Widget>[
                         CategoryCard(
-                          title: "Healthy Recipes",
+                          title: "Food Log",
                           svgSrc: "assets/icons/Hamburger.svg",
                           press: () {
                             Navigator.of(context).pushNamed('/recipes');
                           },
                         ),
                         CategoryCard(
-                          title: "Workout Plan",
+                          title: "Workout Log",
                           svgSrc: "assets/icons/Excrecises.svg",
                           press: () {},
                         ),

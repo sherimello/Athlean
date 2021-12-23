@@ -26,7 +26,7 @@ class RoutePage {
       case '/fat_input':
         return MaterialPageRoute(builder: (_) => FatInputPage());
       case '/recipes':
-        return MaterialPageRoute(builder: (_) => HealthyRecipe(title: "Healthy Recipes"));
+        return MaterialPageRoute(builder: (_) => HealthyRecipe(title: "Food Log"));
       case '/meditation':
         return MaterialPageRoute(builder: (_) => DetailsScreen(title: "Sleep and Meditation"));
       default:
