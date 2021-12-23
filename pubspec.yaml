@@ -39,6 +39,9 @@ dependencies:
   dart_numerics: ^0.0.6
   provider: ^6.0.1
   app_usage: ^2.0.0
+  sqflite:
+  path:
+  flutter_typeahead: ^3.2.4
 
 dev_dependencies:
   flutter_native_splash: ^1.2.4

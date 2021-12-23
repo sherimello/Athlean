@@ -1,3 +1,5 @@
+import 'package:athlean/pages/Homepage.dart';
+import 'package:athlean/pages/TestPage.dart';
 import 'package:athlean/pages/login&reg.dart';
 import 'package:athlean/pages/profile.dart';
 import 'package:athlean/widgets/splash.dart';
@@ -15,6 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/home': (context) => HomeScreen(),
+      },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
