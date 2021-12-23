@@ -61,49 +61,52 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Text(
-                    "Good Morning \nMr ${user?.displayName}",
+                    "Hello \nMr ${user?.displayName}",
                     style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontWeight: FontWeight.w900, color: Colors.black),
                   ),
+                  SizedBox(
+                    height: 80,
+                  ),
                   // SearchBar(),
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 31.0),
-                      child: GridView.count(
-                        crossAxisCount: 2,
-                        childAspectRatio: .85,
-                        crossAxisSpacing: 20,
-                        mainAxisSpacing: 20,
-                        children: <Widget>[
-                          CategoryCard(
-                            title: "Healthy Recipes",
-                            svgSrc: "assets/icons/Hamburger.svg",
-                            press: () {
-                              Navigator.of(context).pushNamed('/recipes');
-                            },
-                          ),
-                          CategoryCard(
-                            title: "Workout Plan",
-                            svgSrc: "assets/icons/Excrecises.svg",
-                            press: () {},
-                          ),
-                          CategoryCard(
-                            title: "BMI Calculator",
-                            svgSrc: "assets/icons/Meditation.svg",
-                            press: () {
-                              Navigator.of(context).pushNamed('/bmi_input');
-                            },
-                          ),
-                          CategoryCard(
-                            title: "Body Fat Calculator",
-                            svgSrc: "assets/icons/yoga.svg",
-                            press: () {
-                              Navigator.of(context).pushNamed('/fat_input');
-                            },
-                          ),
-                        ],
-                      ),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      childAspectRatio: .85,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                      children: <Widget>[
+                        CategoryCard(
+                          title: "Healthy Recipes",
+                          svgSrc: "assets/icons/Hamburger.svg",
+                          press: () {
+                            Navigator.of(context).pushNamed('/recipes');
+                          },
+                        ),
+                        CategoryCard(
+                          title: "Workout Plan",
+                          svgSrc: "assets/icons/Excrecises.svg",
+                          press: () {},
+                        ),
+                        CategoryCard(
+                          title: "BMI Calculator",
+                          svgSrc: "assets/icons/Meditation.svg",
+                          press: () {
+                            Navigator.of(context).pushNamed('/bmi_input');
+                          },
+                        ),
+                        CategoryCard(
+                          title: "Body Fat Calculator",
+                          svgSrc: "assets/icons/yoga.svg",
+                          press: () {
+                            Navigator.of(context).pushNamed('/fat_input');
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ],

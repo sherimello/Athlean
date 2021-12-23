@@ -56,7 +56,7 @@ class _home_progress_cardState extends State<home_progress_card> {
                     animationDuration: 1200,
                     percent: widget.progress * .01,
                     backgroundColor: Colors.white,
-                    center: new Text((widget.progress).toString() + indic),
+                    center: new Text((widget.progress).toStringAsFixed(1) + indic),
                     progressColor: widget.color,
                   )),
             ],
