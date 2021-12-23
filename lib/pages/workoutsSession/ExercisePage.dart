@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'workoutNames.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Pushups extends StatelessWidget {
   //final String exerciseName;
@@ -131,9 +130,9 @@ class Pushups extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 new home_progress_card(
-                                    Colors.cyan, 'Calorie Burn', 10),
-                                new home_progress_card(
-                                    Colors.redAccent, 'Workout Progress', 80),
+                                    Colors.cyan, 'Calorie Burn', 10, 0),
+                                new home_progress_card(Colors.redAccent,
+                                    'Workout Progress', 80, 0),
                               ],
                             )),
                         Padding(

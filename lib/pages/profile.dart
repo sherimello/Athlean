@@ -40,8 +40,7 @@ class _profileState extends State<profile> {
         intake = double.parse(data?['intake']);
         double temp = (intakesumtoday / intake) * 100;
         intakepercent = temp;
-        if (intakepercent > 100)
-          intakepercent = 100;
+        if (intakepercent > 100) intakepercent = 100;
       });
     }
   }
@@ -61,8 +60,8 @@ class _profileState extends State<profile> {
         var data = doc.data() as Map<String, dynamic>;
         DateTime date = data['time'].toDate();
         if (date.isAfter(DateTime.now().subtract(Duration(hours: 24))))
-          tempsum +=
-              int.parse(data['kcal'].toString()); // You can get other data in this manner.
+          tempsum += int.parse(data['kcal']
+              .toString()); // You can get other data in this manner.
       }
       setState(() {
         intakesumtoday = tempsum;
@@ -84,9 +83,10 @@ class _profileState extends State<profile> {
       if (doc.data() != null) {
         var data = doc.data() as Map<String, dynamic>;
         DateTime date = data['time'].toDate();
-        if (date.isBefore(DateTime.now().subtract(Duration(hours: 24))) && date.isAfter(DateTime.now().subtract(Duration(hours: 48))))
-          tempsum +=
-              int.parse(data['kcal'].toString()); // You can get other data in this manner.
+        if (date.isBefore(DateTime.now().subtract(Duration(hours: 24))) &&
+            date.isAfter(DateTime.now().subtract(Duration(hours: 48))))
+          tempsum += int.parse(data['kcal']
+              .toString()); // You can get other data in this manner.
       }
       setState(() {
         intakesumyesterday = tempsum;
@@ -253,8 +253,8 @@ class _profileState extends State<profile> {
                                 //these card are health related info cards with progress indicators...
                                 //the class receives a color for card bg and progress color,
                                 // a text as the card title and lastly a progress of the respective action...
-                                new home_progress_card(
-                                    Colors.cyan, 'Calorie\nIntake', intakepercent, 0),
+                                new home_progress_card(Colors.cyan,
+                                    'Calorie\nIntake', intakepercent, 0),
                                 new home_progress_card(Colors.orangeAccent,
                                     'Calorie\nBurn', burn, 0),
                                 new home_progress_card(Colors.deepPurpleAccent,
