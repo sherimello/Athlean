@@ -173,18 +173,14 @@ class _profileState extends State<profile> {
                             'health profile',
                             style: TextStyle(
                               fontSize: 17,
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         decoration: new BoxDecoration(
                           color: Colors.white.withOpacity(.5),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(19),
-                              topRight: Radius.circular(19),
-                              bottomLeft: Radius.circular(19),
-                              bottomRight: Radius.circular(19)),
+                          borderRadius: BorderRadius.all(Radius.circular(7)),
                         )),
                   ),
                 )
