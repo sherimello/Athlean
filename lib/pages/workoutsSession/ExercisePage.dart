@@ -131,8 +131,8 @@ class Pushups extends StatelessWidget {
                               children: [
                                 new home_progress_card(
                                     Colors.cyan, 'Calorie Burn', 10, 0),
-                                new home_progress_card(Colors.redAccent,
-                                    'Workout Progress', 80, 0),
+                                new home_progress_card(
+                                    Colors.redAccent, 'Workout Progress', 80, 0),
                               ],
                             )),
                         Padding(

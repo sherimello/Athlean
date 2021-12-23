@@ -44,7 +44,7 @@ class Workouts extends StatelessWidget {
               filter: new ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: new Container(
                 decoration:
-                    new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                new BoxDecoration(color: Colors.white.withOpacity(0.0)),
               ),
             ),
           ),
@@ -73,7 +73,7 @@ class Workouts extends StatelessWidget {
                       SizedBox(height: 10),
                       SizedBox(
                         width:
-                            size.width * .6, // it just take 60% of total width
+                        size.width * .6, // it just take 60% of total width
                         child: Text(
                           "Stay fit and healthy",
                           style: TextStyle(color: Colors.white),
@@ -90,7 +90,7 @@ class Workouts extends StatelessWidget {
                         children: <Widget>[
                           ...List.generate(
                             exercises.length,
-                            (index) => SeassionCard(
+                                (index) => SeassionCard(
                               whatisit: exercises[index].name,
                               isDone: true,
                               press: () {
@@ -137,7 +137,7 @@ class Workouts extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
@@ -189,7 +189,7 @@ class Workouts extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
