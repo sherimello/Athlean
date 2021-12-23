@@ -260,17 +260,20 @@ class _profileState extends State<profile> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      //SizedBox(height: 20),
                       //Meditation Scheduler
-                      Text(
-                        "Consumed Calorie",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(fontWeight: FontWeight.bold),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          "Consumed Calorie",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
+                        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                         padding: EdgeInsets.all(10),
                         height: 90,
                         decoration: BoxDecoration(
@@ -313,7 +316,7 @@ class _profileState extends State<profile> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
+                        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                         padding: EdgeInsets.all(10),
                         height: 90,
                         decoration: BoxDecoration(
