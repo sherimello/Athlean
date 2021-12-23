@@ -6,9 +6,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:athlean/widgets/caloriegoalinput.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:athlean/widgets/calorieburngoal.dart';
+import 'package:app_usage/app_usage.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 double intake = 100;
+double usage = 0;
 class profile extends StatefulWidget {
   const profile({Key? key}) : super(key: key);
 
@@ -30,6 +32,31 @@ class _profileState extends State<profile> {
       });
     }
   }
+
+  void getUsageStats() async {
+    try {
+      DateTime endDate = new DateTime.now();
+      DateTime startDate = endDate.subtract(Duration(hours: 24));
+      List<AppUsageInfo> infoList = await AppUsage.getAppUsage(startDate, endDate);
+
+      double sum = 0;
+      for (var info in infoList) {
+        sum += (info.usage.inHours);
+      }
+      setState(() {
+        usage = sum;
+      });
+    } on AppUsageException catch (exception) {
+      print(exception);
+    }
+  }
+
+  @override
+  void initState() {
+    getUsageStats();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -149,11 +176,11 @@ class _profileState extends State<profile> {
                             //the class receives a color for card bg and progress color,
                             // a text as the card title and lastly a progress of the respective action...
                             new home_progress_card(
-                                Colors.cyan, 'Calorie\nIntake', intake),
+                                Colors.cyan, 'Calorie\nIntake', intake, 0),
                             new home_progress_card(
-                                Colors.orangeAccent, 'Calorie\nBurn', 20),
+                                Colors.orangeAccent, 'Calorie\nBurn', 20, 0),
                             new home_progress_card(Colors.deepPurpleAccent,
-                                'Workout\nProgress', 34.6),
+                                'Screen\nUsage', usage, 1),
                           ],
                         ),
                       ),
