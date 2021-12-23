@@ -1,3 +1,4 @@
+import 'package:athlean/pages/login&reg.dart';
 import 'package:flutter/material.dart';
 import 'color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,7 +6,9 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 
 class login_fields extends StatefulWidget {
-  const login_fields({Key? key}) : super(key: key);
+  // const login_fields({Key? key}) : super(key: key);
+  Function fun;
+  login_fields(this.fun);
 
   @override
   State<login_fields> createState() => _login_fieldsState();
@@ -97,7 +100,8 @@ class _login_fieldsState extends State<login_fields> {
                     ),
                   ),
                   InkWell(
-                    onTap: () async {
+                    onTap: ()
+                    async {
                       setState(() {
                         showSpinner = true;
                       });
