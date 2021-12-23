@@ -1,10 +1,12 @@
 import 'dart:ui';
 
+import 'package:athlean/pages/workoutsSession/Pushup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:athlean/widgets/color.dart';
 import 'package:athlean/widgets/bottomnavbar.dart';
 import 'package:athlean/widgets/searchbar.dart';
+import '../pages/workoutsSession/exerciseList.dart';
 
 class Workouts extends StatelessWidget {
   final String title;
@@ -86,32 +88,18 @@ class Workouts extends StatelessWidget {
                         spacing: 20,
                         runSpacing: 20,
                         children: <Widget>[
-                          SeassionCard(
-                            whatisit: "Push Up\n",
-                            isDone: true,
-                            press: () {
-                              Navigator.of(context).pushNamed('/pushups');
-                            },
-                          ),
-                          SeassionCard(
-                            whatisit: "Pull Up\n",
-                            press: () {},
-                          ),
-                          SeassionCard(
-                            whatisit: "Squat\n",
-                            press: () {},
-                          ),
-                          SeassionCard(
-                            whatisit: "Dumbbell \nCurl\n",
-                            press: () {},
-                          ),
-                          SeassionCard(
-                            whatisit: "Calf Raise\n",
-                            press: () {},
-                          ),
-                          SeassionCard(
-                            whatisit: "Leg Ext.\n",
-                            press: () {},
+                          ...List.generate(
+                            exercises.length,
+                            (index) => SeassionCard(
+                              whatisit: exercises[index].name,
+                              isDone: true,
+                              press: () {
+                                Navigator.of(context).pushNamed(
+                                  '/pushups',
+                                  arguments: index,
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),

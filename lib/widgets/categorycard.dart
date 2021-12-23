@@ -4,12 +4,18 @@ import 'color.dart';
 
 class CategoryCard extends StatelessWidget {
   final String svgSrc;
+  final Color colorcard;
   final String title;
+  final double heightofimage;
+  final double widthofimage;
   final void Function()? press;
   const CategoryCard({
-     Key? key,
+    Key? key,
+    required this.colorcard,
     required this.svgSrc,
     required this.title,
+    required this.heightofimage,
+    required this.widthofimage,
     this.press,
   }) : super(key: key);
 
@@ -20,7 +26,7 @@ class CategoryCard extends StatelessWidget {
       child: Container(
         // padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: colorcard,
           borderRadius: BorderRadius.circular(13),
           boxShadow: [
             BoxShadow(
@@ -36,11 +42,15 @@ class CategoryCard extends StatelessWidget {
           child: InkWell(
             onTap: press,
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: <Widget>[
                   Spacer(),
-                  SvgPicture.asset(svgSrc),
+                  SizedBox(
+                    height: heightofimage,
+                    width: widthofimage,
+                    child: SvgPicture.asset(svgSrc),
+                  ),
                   Spacer(),
                   Text(
                     title,

@@ -5,10 +5,8 @@ import '../widgets/searchbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
 
@@ -76,28 +74,40 @@ class HomeScreen extends StatelessWidget {
                       children: <Widget>[
                         CategoryCard(
                           title: "Healthy Recipes",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/Hamburger.svg",
+                          heightofimage: 100,
+                          widthofimage: 100,
                           press: () {
                             Navigator.of(context).pushNamed('/recipes');
                           },
                         ),
                         CategoryCard(
                           title: "Workout Plan",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/Excrecises.svg",
+                          heightofimage: 100,
+                          widthofimage: 100,
                           press: () {
                             Navigator.of(context).pushNamed('/workout');
                           },
                         ),
                         CategoryCard(
                           title: "BMI Calculator",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/Meditation.svg",
+                          heightofimage: 100,
+                          widthofimage: 100,
                           press: () {
                             Navigator.of(context).pushNamed('/bmi_input');
                           },
                         ),
                         CategoryCard(
                           title: "Body Fat Calculator",
+                          colorcard: Colors.white,
                           svgSrc: "assets/icons/yoga.svg",
+                          heightofimage: 100,
+                          widthofimage: 100,
                           press: () {
                             Navigator.of(context).pushNamed('/fat_input');
                           },

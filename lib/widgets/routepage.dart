@@ -7,7 +7,7 @@ import 'package:athlean/widgets/desc_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:athlean/pages/bmi_input_page.dart';
 import 'package:athlean/pages/fat_input_page.dart';
-
+import '../pages/workoutsSession/Pushup.dart';
 import '../pages/login&reg.dart';
 import '../pages/registrationpanel.dart';
 
@@ -28,14 +28,19 @@ class RoutePage {
       case '/fat_input':
         return MaterialPageRoute(builder: (_) => FatInputPage());
       case '/pushups':
-        return MaterialPageRoute(builder: (_) => Pushup());
+        final String data = settings.arguments.toString();
+        print(data);
+        return MaterialPageRoute(builder: (context) => Pushups(index: data));
 
       case '/recipes':
-        return MaterialPageRoute(builder: (_) => HealthyRecipe(title: "Healthy Recipes"));
+        return MaterialPageRoute(
+            builder: (_) => HealthyRecipe(title: "Healthy Recipes"));
       case '/workout':
-        return MaterialPageRoute(builder: (_) => Workouts(title: "Workouts Resources"));
+        return MaterialPageRoute(
+            builder: (_) => Workouts(title: "Workouts Resources"));
       case '/meditation':
-        return MaterialPageRoute(builder: (_) => DetailsScreen(title: "Sleep and Meditation"));
+        return MaterialPageRoute(
+            builder: (_) => DetailsScreen(title: "Sleep and Meditation"));
       default:
         return _errorRoute();
     }
