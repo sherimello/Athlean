@@ -7,9 +7,15 @@ import 'package:athlean/widgets/caloriegoalinput.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:athlean/widgets/calorieburngoal.dart';
 import 'package:app_usage/app_usage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:athlean/widgets/color.dart';
+import 'package:athlean/widgets/bottomnavbar.dart';
+import 'package:athlean/widgets/searchbar.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-double intake = 100;
+double intake = 0;
+double burn = 0;
 double usage = 0;
 class profile extends StatefulWidget {
   const profile({Key? key}) : super(key: key);
@@ -29,6 +35,19 @@ class _profileState extends State<profile> {
       Map<String, dynamic>? data = calorieIntake.data();
       setState(() {
         intake = double.parse(data?['intake']);
+      });
+    }
+  }
+
+  Future getBurn () async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    var calorieIntake = await _firestore.collection('calburn').doc(
+        user?.email).get();
+    if (calorieIntake.exists) {
+      Map<String, dynamic>? data = calorieIntake.data();
+      setState(() {
+        burn = double.parse(data?['burn']);
       });
     }
   }
@@ -62,6 +81,7 @@ class _profileState extends State<profile> {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     getIntake();
+    getBurn();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -178,7 +198,7 @@ class _profileState extends State<profile> {
                             new home_progress_card(
                                 Colors.cyan, 'Calorie\nIntake', intake, 0),
                             new home_progress_card(
-                                Colors.orangeAccent, 'Calorie\nBurn', 20, 0),
+                                Colors.orangeAccent, 'Calorie\nBurn', burn, 0),
                             new home_progress_card(Colors.deepPurpleAccent,
                                 'Screen\nUsage', usage, 1),
                           ],
@@ -240,6 +260,106 @@ class _profileState extends State<profile> {
                           ],
                         ),
                       ),
+                      //SizedBox(height: 20),
+                      //Meditation Scheduler
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          "Consumed Calorie",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        padding: EdgeInsets.all(10),
+                        height: 90,
+                        decoration: BoxDecoration(
+                          color: Colors.blueGrey,
+                          borderRadius: BorderRadius.circular(13),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 17),
+                              blurRadius: 23,
+                              spreadRadius: -13,
+                              color: kShadowColor,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            SvgPicture.asset(
+                              "assets/icons/Hamburger.svg",
+                            ),
+                            SizedBox(width: 20),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    "Today",
+                                    style: Theme.of(context).textTheme.subtitle1!.apply(color: Colors.white),
+                                  ),
+                                  Text("700 Calories",
+                                    style: Theme.of(context).textTheme.subtitle1!.apply(color: Colors.white),)
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: SvgPicture.asset("assets/icons/menu.svg"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        padding: EdgeInsets.all(10),
+                        height: 90,
+                        decoration: BoxDecoration(
+                          color: Colors.indigoAccent,
+                          borderRadius: BorderRadius.circular(13),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 17),
+                              blurRadius: 23,
+                              spreadRadius: -13,
+                              color: kShadowColor,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            SvgPicture.asset(
+                              "assets/icons/Hamburger.svg",
+                            ),
+                            SizedBox(width: 20),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    "Yesterday",
+                                    style: Theme.of(context).textTheme.subtitle1!.apply(color: Colors.white),
+                                  ),
+                                  Text("2335 Calories",
+                                    style: Theme.of(context).textTheme.subtitle1!.apply(color: Colors.white),)
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: SvgPicture.asset("assets/icons/menu.svg"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      //Sleep Scheduler
+                      SizedBox(height: 20),
                       //this tag is a joke...it's here just to make the UI scrollable. #asthetics XD
                       Opacity(
                         opacity: 0,
@@ -254,7 +374,9 @@ class _profileState extends State<profile> {
                 ),
               ],
             ),
-          ]))
+          ],
+              ),
+          ),
         ],
       ),
     );
