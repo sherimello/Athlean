@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         .size; //this gonna give us total height and with of our device
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: BottomNavBar(),
+      // bottomNavigationBar: BottomNavBar(),
       body: Stack(
         children: <Widget>[
           Container(
@@ -59,12 +59,18 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Text(
-                    "Good Morning \nMr ${user?.displayName}",
+                    "Hello \nMr ${user?.displayName}",
                     style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontWeight: FontWeight.w900, color: Colors.black),
                   ),
-                  SearchBar(),
+                  SizedBox(
+                    height: 80,
+                  ),
+                  // SearchBar(),
                   Expanded(
                     child: GridView.count(
                       crossAxisCount: 2,
