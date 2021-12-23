@@ -15,6 +15,7 @@ import 'package:athlean/widgets/searchbar.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 double intake = 0;
+double intakepercent = 0;
 double burn = 0;
 double usage = 0;
 int intakesumtoday = 0;
@@ -37,6 +38,10 @@ class _profileState extends State<profile> {
       Map<String, dynamic>? data = calorieIntake.data();
       setState(() {
         intake = double.parse(data?['intake']);
+        double temp = (intakesumtoday / intake) * 100;
+        intakepercent = temp;
+        if (intakepercent > 100)
+          intakepercent = 100;
       });
     }
   }
@@ -131,9 +136,9 @@ class _profileState extends State<profile> {
   Widget build(BuildContext context) {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
+    getIntakeSumToday();
     getIntake();
     getBurn();
-    getIntakeSumToday();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -249,7 +254,7 @@ class _profileState extends State<profile> {
                                 //the class receives a color for card bg and progress color,
                                 // a text as the card title and lastly a progress of the respective action...
                                 new home_progress_card(
-                                    Colors.cyan, 'Calorie\nIntake', intake, 0),
+                                    Colors.cyan, 'Calorie\nIntake', intakepercent, 0),
                                 new home_progress_card(Colors.orangeAccent,
                                     'Calorie\nBurn', burn, 0),
                                 new home_progress_card(Colors.deepPurpleAccent,
