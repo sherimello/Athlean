@@ -1,12 +1,15 @@
 import 'dart:ui';
 
 import 'package:athlean/pages/workoutsSession/ExercisePage.dart';
+import 'package:athlean/widgets/home_progress_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:athlean/widgets/color.dart';
 import 'package:athlean/widgets/bottomnavbar.dart';
 import 'package:athlean/widgets/searchbar.dart';
 import '../pages/workoutsSession/exerciseList.dart';
+
+double totalWorkoutburn = 0.0;
 
 class Workouts extends StatelessWidget {
   final String title;
@@ -17,6 +20,10 @@ class Workouts extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < exercises.length; i++) {
+      totalWorkoutburn =
+          totalWorkoutburn + double.parse(exercises[i].workoutburn);
+    }
     var size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -44,7 +51,7 @@ class Workouts extends StatelessWidget {
               filter: new ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: new Container(
                 decoration:
-                new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                    new BoxDecoration(color: Colors.white.withOpacity(0.0)),
               ),
             ),
           ),
@@ -73,7 +80,7 @@ class Workouts extends StatelessWidget {
                       SizedBox(height: 10),
                       SizedBox(
                         width:
-                        size.width * .6, // it just take 60% of total width
+                            size.width * .6, // it just take 60% of total width
                         child: Text(
                           "Stay fit and healthy",
                           style: TextStyle(color: Colors.white),
@@ -90,8 +97,9 @@ class Workouts extends StatelessWidget {
                         children: <Widget>[
                           ...List.generate(
                             exercises.length,
-                                (index) => SeassionCard(
+                            (index) => SeassionCard(
                               whatisit: exercises[index].name,
+                              totalBurned: exercises[index].workoutburn,
                               isDone: true,
                               press: () {
                                 Navigator.of(context).pushNamed(
@@ -112,110 +120,126 @@ class Workouts extends StatelessWidget {
                             .headline6!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
-                        padding: EdgeInsets.all(10),
-                        height: 90,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(13),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(0, 0),
-                              blurRadius: 12,
-                              spreadRadius: -10,
-                              color: kShadowColor,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            SvgPicture.asset(
-                              "assets/icons/Hamburger.svg",
-                            ),
-                            SizedBox(width: 20),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    "Today",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .apply(color: Colors.black),
-                                  ),
-                                  Text(
-                                    "700 Calories",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .apply(color: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(10),
-                              child: SvgPicture.asset("assets/icons/menu.svg"),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
-                        padding: EdgeInsets.all(10),
-                        height: 90,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(13),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(0, 0),
-                              blurRadius: 12,
-                              spreadRadius: -10,
-                              color: kShadowColor,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            SvgPicture.asset(
-                              "assets/icons/Hamburger.svg",
-                            ),
-                            SizedBox(width: 20),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    "Yesterday",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .apply(color: Colors.black),
-                                  ),
-                                  Text(
-                                    "2335 Calories",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .apply(color: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(10),
-                              child: SvgPicture.asset("assets/icons/menu.svg"),
-                            ),
-                          ],
-                        ),
-                      ),
+                      SizedBox(height: 20),
+                      Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 12, 12, 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(),
+                              new home_progress_card(
+                                  Colors.cyan,
+                                  'Today Calorie Burn',
+                                  totalWorkoutburn / 100.0,
+                                  0),
+                              new home_progress_card(Colors.redAccent,
+                                  'Yesterday Calorie burn', 80, 0),
+                            ],
+                          )),
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(vertical: 20),
+                      //   padding: EdgeInsets.all(10),
+                      //   height: 90,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.white,
+                      //     borderRadius: BorderRadius.circular(13),
+                      //     boxShadow: [
+                      //       BoxShadow(
+                      //         offset: Offset(0, 0),
+                      //         blurRadius: 12,
+                      //         spreadRadius: -10,
+                      //         color: kShadowColor,
+                      //       ),
+                      //     ],
+                      //   ),
+                      //   child: Row(
+                      //     children: <Widget>[
+                      //       SvgPicture.asset(
+                      //         "assets/icons/Hamburger.svg",
+                      //       ),
+                      //       SizedBox(width: 20),
+                      //       Expanded(
+                      //         child: Column(
+                      //           mainAxisAlignment:
+                      //               MainAxisAlignment.spaceEvenly,
+                      //           crossAxisAlignment: CrossAxisAlignment.start,
+                      //           children: <Widget>[
+                      //             Text(
+                      //               "Today",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.black),
+                      //             ),
+                      //             Text(
+                      //               "$totalWorkoutburn calories burned",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.black),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       Padding(
+                      //         padding: EdgeInsets.all(10),
+                      //         child: SvgPicture.asset("assets/icons/menu.svg"),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(vertical: 20),
+                      //   padding: EdgeInsets.all(10),
+                      //   height: 90,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.white,
+                      //     borderRadius: BorderRadius.circular(13),
+                      //     boxShadow: [
+                      //       BoxShadow(
+                      //         offset: Offset(0, 0),
+                      //         blurRadius: 12,
+                      //         spreadRadius: -10,
+                      //         color: kShadowColor,
+                      //       ),
+                      //     ],
+                      //   ),
+                      //   child: Row(
+                      //     children: <Widget>[
+                      //       SvgPicture.asset(
+                      //         "assets/icons/Hamburger.svg",
+                      //       ),
+                      //       SizedBox(width: 20),
+                      //       Expanded(
+                      //         child: Column(
+                      //           mainAxisAlignment:
+                      //               MainAxisAlignment.spaceEvenly,
+                      //           crossAxisAlignment: CrossAxisAlignment.start,
+                      //           children: <Widget>[
+                      //             Text(
+                      //               "Yesterday",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.black),
+                      //             ),
+                      //             Text(
+                      //               "2335 Calories",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.black),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       Padding(
+                      //         padding: EdgeInsets.all(10),
+                      //         child: SvgPicture.asset("assets/icons/menu.svg"),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       //Sleep Scheduler
                       SizedBox(height: 20),
                     ],
@@ -233,12 +257,14 @@ class Workouts extends StatelessWidget {
 class SeassionCard extends StatelessWidget {
   final bool isDone;
   final String whatisit;
+  final String totalBurned;
   final void Function()? press;
   const SeassionCard({
     Key? key,
     this.isDone = false,
     this.press,
     required this.whatisit,
+    required this.totalBurned,
   }) : super(key: key);
 
   @override
@@ -284,13 +310,27 @@ class SeassionCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Text(
-                      "$whatisit",
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    )
+                    Column(children: [
+                      Wrap(children: [
+                        Text(
+                          "$whatisit",
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ]),
+                      SizedBox(height: 5),
+                      Wrap(children: [
+                        Text(
+                          "$totalBurned",
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ])
+                    ]),
                   ],
                 ),
               ),

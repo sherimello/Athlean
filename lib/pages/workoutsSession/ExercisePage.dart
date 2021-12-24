@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:athlean/pages/workoutsSession/card.dart';
 import 'package:athlean/pages/workoutsSession/exerciseList.dart';
 import 'package:athlean/widgets/categorycard.dart';
@@ -7,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'workoutNames.dart';
+
+double cal_Burn = 0.0;
+var listIndex = 0;
 
 class Pushups extends StatelessWidget {
   //final String exerciseName;
@@ -20,8 +25,9 @@ class Pushups extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var listIndex = int.parse(index);
+    listIndex = int.parse(index);
     String exerciseName = exercises[listIndex].name;
+    cal_Burn = double.parse(exercises[listIndex].calBurn);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -130,9 +136,9 @@ class Pushups extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 new home_progress_card(
-                                    Colors.cyan, 'Calorie Burn', 10, 0),
-                                new home_progress_card(
-                                    Colors.redAccent, 'Workout Progress', 80, 0),
+                                    Colors.cyan, 'Calorie Burn', cal_Burn, 0),
+                                new home_progress_card(Colors.redAccent,
+                                    'Workout Progress', 80, 0),
                               ],
                             )),
                         Padding(
@@ -286,7 +292,8 @@ class Pushups extends StatelessWidget {
 class AddWorkout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String newWorkoutGoal = "";
+    users.clear();
+    double newWorkoutGoal = 0.0;
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -313,7 +320,7 @@ class AddWorkout extends StatelessWidget {
               autofocus: true,
               textAlign: TextAlign.center,
               onChanged: (newText) {
-                newWorkoutGoal = newText;
+                newWorkoutGoal = double.parse(newText);
               },
             ),
             FlatButton(
@@ -325,8 +332,15 @@ class AddWorkout extends StatelessWidget {
               ),
               color: Colors.teal,
               onPressed: () {
+                double w = newWorkoutGoal;
+                double c = w * cal_Burn;
+                c = c + double.parse(exercises[listIndex].workoutburn);
+                UserDatas(name: "__", workoutDur: w, cal_Burn: c);
                 // Provider.of<TaskData>(context).addTask(newCalGoal);
-                print(newWorkoutGoal);
+                //print(users[0].cal_Burn);
+                print(exercises[listIndex].name);
+                exercises[listIndex].workoutburn = c.toStringAsFixed(2);
+                print(exercises[listIndex].workoutburn);
               },
             ),
           ],
