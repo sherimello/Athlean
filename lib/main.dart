@@ -1,3 +1,4 @@
+import 'package:athlean/pages/TestPage.dart';
 import 'package:athlean/pages/login&reg.dart';
 import 'package:athlean/pages/profile.dart';
 import 'package:athlean/widgets/splash.dart';

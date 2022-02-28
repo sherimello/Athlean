@@ -4,8 +4,7 @@ import 'package:athlean/widgets/reusable_card.dart';
 import 'package:athlean/widgets/bottom_button.dart';
 
 class FatResultsPage extends StatelessWidget {
-  FatResultsPage(
-      {this.fatResult = "", this.resultText = ""});
+  FatResultsPage({this.fatResult = "", this.resultText = ""});
 
   final String fatResult;
   final String resultText;
@@ -13,10 +12,10 @@ class FatResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFCFD8DC),
+      backgroundColor: Color(0xffbcefe1),
       appBar: AppBar(
         title: Text('BODY FAT RESULT'),
-        backgroundColor: Color(0xFFCFD8DC),
+        backgroundColor: Colors.redAccent,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,14 +34,14 @@ class FatResultsPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: ReusableCard(
-              colour: kActiveCardColour,
+              colour: Colors.redAccent,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     resultText.toUpperCase(),
-                    style: kResultTextStyle,
+                    style: TextStyle(color: Colors.white),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -66,12 +65,21 @@ class FatResultsPage extends StatelessWidget {
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'RE-CALCULATE',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 50,
+              child: RaisedButton(
+                child: Text("Re Calculate"),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
+                color: Colors.blueAccent,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );

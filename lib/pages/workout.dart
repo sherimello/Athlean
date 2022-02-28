@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:athlean/pages/workoutsSession/ExercisePage.dart';
@@ -27,7 +28,7 @@ class Workouts extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: BottomNavBar(),
+      //bottomNavigationBar: BottomNavBar(),
       body: Stack(
         children: <Widget>[
           Container(
@@ -89,7 +90,7 @@ class Workouts extends StatelessWidget {
                       SizedBox(
                         // width: size.width * .7, // it just take the 70% width
                         width: size.width * 1, // it just take the 70% width
-                        child: SearchBar(),
+                        height: 70,
                       ),
                       Wrap(
                         spacing: 20,

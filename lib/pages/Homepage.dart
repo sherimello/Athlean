@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/bottomnavbar.dart';
 import '../widgets/categorycard.dart';
-import '../widgets/searchbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,6 +12,7 @@ class HomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context)
         .size; //this gonna give us total height and with of our device
     return Scaffold(
+      backgroundColor: Color(0xffbcefe1),
       resizeToAvoidBottomInset: false,
       // bottomNavigationBar: BottomNavBar(),
       body: Stack(
@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                     height: 30,
                   ),
                   Text(
-                    "Hello \nMr ${user?.displayName}",
+                    "Hello!\n${user?.displayName}",
                     style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontWeight: FontWeight.w900, color: Colors.black),
                   ),

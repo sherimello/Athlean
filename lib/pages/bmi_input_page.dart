@@ -27,54 +27,54 @@ class _BmiInputPageState extends State<BmiInputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFCFD8DC),
+      backgroundColor: Color(0xffbcefe1),
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
-        backgroundColor: Color(0xFFCFD8DC),
+        backgroundColor: Colors.redAccent,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
               child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: ReusableCard(
-                      onPress: () {
-                        setState(() {
-                          selectedGender = Gender.male;
-                        });
-                      },
-                      colour: selectedGender == Gender.male
-                          ? kActiveCardColour
-                          : kInactiveCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE',
-                      ),
-                    ),
+            children: <Widget>[
+              Expanded(
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                  colour: selectedGender == Gender.male
+                      ? Color(0xFF5CADD2)
+                      : Colors.white,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: 'MALE',
                   ),
-                  Expanded(
-                    child: ReusableCard(
-                      onPress: () {
-                        setState(() {
-                          selectedGender = Gender.female;
-                        });
-                      },
-                      colour: selectedGender == Gender.female
-                          ? kActiveCardColour
-                          : kInactiveCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
-                    ),
+                ),
+              ),
+              Expanded(
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  colour: selectedGender == Gender.female
+                      ? Color(0xFF5CADD2)
+                      : Colors.white,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
                   ),
-                ],
-              )),
+                ),
+              ),
+            ],
+          )),
           Expanded(
             child: ReusableCard(
-              colour: kActiveCardColour,
+              colour: Colors.white,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -99,14 +99,14 @@ class _BmiInputPageState extends State<BmiInputPage> {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      inactiveTrackColor: Color(0xFF8D8E98),
-                      activeTrackColor: Colors.white,
-                      thumbColor: Color(0xFFEB1555),
-                      overlayColor: Color(0x29EB1555),
+                      inactiveTrackColor: Color(0xFFD6D6D6),
+                      activeTrackColor: Color(0xFF1892C8),
+                      thumbColor: Color(0xFF5CADD2),
+                      overlayColor: Color(0x406ABCD9),
                       thumbShape:
-                      RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          RoundSliderThumbShape(enabledThumbRadius: 11.0),
                       overlayShape:
-                      RoundSliderOverlayShape(overlayRadius: 30.0),
+                          RoundSliderOverlayShape(overlayRadius: 15.0),
                     ),
                     child: Slider(
                       value: height.toDouble(),
@@ -128,7 +128,7 @@ class _BmiInputPageState extends State<BmiInputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: kActiveCardColour,
+                    colour: Color(0xFF5CADD2),
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -143,23 +143,36 @@ class _BmiInputPageState extends State<BmiInputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            RoundIconButton(
-                                icon: FontAwesomeIcons.minus,
-                                onPressed: () {
-                                  setState(() {
-                                    weight--;
-                                  });
-                                }),
+                            SizedBox(
+                              width: 60,
+                              height: 55,
+                              child: RaisedButton(
+                                  child: Icon(FontAwesomeIcons.minus),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(40)),
+                                  color: Colors.white,
+                                  onPressed: () {
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  }),
+                            ),
                             SizedBox(
                               width: 10.0,
                             ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
+                            SizedBox(
+                              width: 60,
+                              height: 55,
+                              child: RaisedButton(
+                                  child: Icon(FontAwesomeIcons.plus),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(40)),
+                                  color: Colors.white,
+                                  onPressed: () {
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  }),
                             ),
                           ],
                         ),
@@ -169,7 +182,7 @@ class _BmiInputPageState extends State<BmiInputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: kActiveCardColour,
+                    colour: Color(0xFF5CADD2),
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -184,26 +197,37 @@ class _BmiInputPageState extends State<BmiInputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPressed: () {
-                                setState(
-                                      () {
-                                    age--;
-                                  },
-                                );
-                              },
+                            SizedBox(
+                              width: 60,
+                              height: 55,
+                              child: RaisedButton(
+                                  child: Icon(FontAwesomeIcons.minus),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(40)),
+                                  color: Colors.white,
+                                  onPressed: () {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  }),
                             ),
                             SizedBox(
                               width: 10.0,
                             ),
-                            RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onPressed: () {
-                                  setState(() {
-                                    age++;
-                                  });
-                                })
+                            SizedBox(
+                              width: 60,
+                              height: 55,
+                              child: RaisedButton(
+                                  child: Icon(FontAwesomeIcons.plus),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(40)),
+                                  color: Colors.white,
+                                  onPressed: () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  }),
+                            )
                           ],
                         )
                       ],
@@ -213,23 +237,32 @@ class _BmiInputPageState extends State<BmiInputPage> {
               ],
             ),
           ),
-          BottomButton(
-            buttonTitle: 'CALCULATE',
-            onTap: () {
-              BmiCalculatorBrain calc =
-              BmiCalculatorBrain(height: height, weight: weight);
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 50,
+              child: RaisedButton(
+                child: Text("Calculate"),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
+                color: Colors.blueAccent,
+                onPressed: () {
+                  BmiCalculatorBrain calc =
+                      BmiCalculatorBrain(height: height, weight: weight);
 
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BmiResultsPage(
-                    bmiResult: calc.calculateBMI(),
-                    resultText: calc.getResult(),
-                    interpretation: calc.getInterpretation(),
-                  ),
-                ),
-              );
-            },
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BmiResultsPage(
+                        bmiResult: calc.calculateBMI(),
+                        resultText: calc.getResult(),
+                        interpretation: calc.getInterpretation(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ),

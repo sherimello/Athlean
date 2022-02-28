@@ -29,7 +29,7 @@ class _FatInputPageState extends State<FatInputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFCFD8DC),
+      backgroundColor: Color(0xffbcefe1),
       appBar: AppBar(
         title: Text('BODY FAT CALCULATOR'),
         backgroundColor: Color(0xFFCFD8DC),
@@ -137,7 +137,7 @@ class _FatInputPageState extends State<FatInputPage> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      colour: Colors.redAccent,
+                      colour: Color(0xFF5CADD2),
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -204,7 +204,7 @@ class _FatInputPageState extends State<FatInputPage> {
                   ),
                   Expanded(
                     child: ReusableCard(
-                      colour: Colors.redAccent,
+                      colour: Color(0xFF5CADD2),
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -277,7 +277,7 @@ class _FatInputPageState extends State<FatInputPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                height: 30,
+                height: 50,
                 child: RaisedButton(
                   child: Text("Calculate"),
                   shape: RoundedRectangleBorder(

@@ -12,6 +12,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
 class HealthyRecipe extends StatefulWidget {
   final String title;
   String newCalGoal = "";
@@ -33,7 +34,6 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
   var _selected_cal_listings = <Calorie>[];
   int intakesumtoday = 0;
 
-
   Future getIntakeSumToday() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
@@ -49,8 +49,8 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
         var data = doc.data() as Map<String, dynamic>;
         DateTime date = data['time'].toDate();
         if (date.isAfter(DateTime.now().subtract(Duration(hours: 24))))
-          tempsum +=
-              int.parse(data['kcal'].toString()); // You can get other data in this manner.
+          tempsum += int.parse(data['kcal']
+              .toString()); // You can get other data in this manner.
       }
       setState(() {
         intakesumtoday = tempsum;
@@ -78,7 +78,6 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
 
-
     Future getIntakeSumToday() async {
       final FirebaseAuth auth = FirebaseAuth.instance;
       final User? user = auth.currentUser;
@@ -94,8 +93,8 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
           var data = doc.data() as Map<String, dynamic>;
           DateTime date = data['time'].toDate();
           if (date.isAfter(DateTime.now().subtract(Duration(hours: 24))))
-            tempsum +=
-                int.parse(data['kcal'].toString()); // You can get other data in this manner.
+            tempsum += int.parse(data['kcal']
+                .toString()); // You can get other data in this manner.
         }
         setState(() {
           intakesumtoday = tempsum;
@@ -105,15 +104,14 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
 
     void addData(Calorie food) {
       _firestore.collection('foodinput').add({
-        'time' : DateTime.now(),
+        'time': DateTime.now(),
         'email': user?.email,
-        'name' : food.foodName,
+        'name': food.foodName,
         'kcal': food.calorie,
       });
       setState(() {
-        _selected_cal_listings.add(new Calorie(
-            foodName: food.foodName,
-            calorie: food.calorie));
+        _selected_cal_listings
+            .add(new Calorie(foodName: food.foodName, calorie: food.calorie));
         // _getSelectedFoodListings();
       });
     }
@@ -130,7 +128,6 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
               seassionNum: 'cal: ' + food.calorie.toString() + 'kCal',
               isDone: false,
               press: () {
-
                 addData(food);
                 // setState(() {
                 //   _selected_cal_listings.add(new Calorie(
@@ -157,6 +154,7 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
     getIntakeSumToday();
 
     return Scaffold(
+      backgroundColor: Color(0xffbcefe1),
       resizeToAvoidBottomInset: false,
       // bottomNavigationBar: BottomNavBar(),
       body: Stack(
@@ -174,319 +172,321 @@ class _HealthyRecipeState extends State<HealthyRecipe> {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      height: size.height * 0.05,
-                    ),
-                    Text(
-                      widget.title,
-                      style: Theme.of(context).textTheme.headline4!.copyWith(
-                          fontWeight: FontWeight.w900, color: Colors.white),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Every Calorie Matters",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: size.width * .6, // it just take 60% of total width
-                      child: Text(
-                        "Live happier and healthier by eating healthy food",
-                        style: TextStyle(color: Colors.white),
+              child: Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        height: size.height * 0.05,
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      padding: EdgeInsets.all(10),
-                      height: 90,
-                      decoration: BoxDecoration(
-                        color: Colors.cyan,
-                        borderRadius: BorderRadius.circular(13),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 0),
-                            blurRadius: 13,
-                            spreadRadius: -10,
-                            color: kShadowColor,
-                          ),
-                        ],
+                      Text(
+                        widget.title,
+                        style: Theme.of(context).textTheme.headline4!.copyWith(
+                            fontWeight: FontWeight.w900, color: Colors.white),
                       ),
-                      child: Row(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            "assets/icons/Hamburger.svg",
-                          ),
-                          SizedBox(width: 20),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  "Today",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle1!
-                                      .apply(color: Colors.white),
-                                ),
-                                Text(
-                                  "${intakesumtoday.toString()} Calories",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle1!
-                                      .apply(color: Colors.white),
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child:
-                            SvgPicture.asset("assets/icons/menu.svg"),
-                          ),
-                        ],
+                      SizedBox(height: 10),
+                      Text(
+                        "Every Calorie Matters",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
                       ),
-                    ),
-                    SizedBox(
-                      // width: size.width * .7, // it just take the 70% width
-                      width: size.width * 1, // it just take the 70% width
-                      child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 30),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(29.5),
-                          ),
-                          child: Row(children: [
-                            Flexible(
-                              child: TypeAheadField(
-                                textFieldConfiguration: TextFieldConfiguration(
-                                    autofocus: false,
-                                    controller: _typeAheadController,
-                                    style: TextStyle(
-                                        decoration: TextDecoration.none,
-                                        color: Colors.white),
-                                    decoration: InputDecoration(
-                                        hintText: "Search",
-                                        hintStyle:
-                                            TextStyle(color: Colors.white),
-                                        border: OutlineInputBorder())),
-                                suggestionsCallback: (pattern) async {
-                                  return await new SQLite().foodNames();
-                                },
-                                itemBuilder: (context, suggestion) {
-                                  return ListTile(
-                                    leading: Icon(Icons.fastfood),
-                                    title: Text(suggestion.toString()),
-                                  );
-                                },
-                                onSuggestionSelected: (suggestion) {
-                                  _typeAheadController.text =
-                                      suggestion.toString();
-                                  name = suggestion.toString();
-                                  new SQLite()
-                                      .foodCalorie(name)
-                                      .then((String val) {
-                                    cal = val;
-                                  });
-                                },
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                new SQLite()
-                                    .initUserDataEntry(name, int.parse(cal));
-                                _typeAheadController.text = cal;
-
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                  content: Text(cal),
-                                ));
-
-                                addData(new Calorie(foodName:name,calorie:int.parse(cal)));
-
-                                //
-                              },
-                              child: Icon(
-                                Icons.add_circle,
-                                color: Colors.white,
-                              ),
-                            )
-                          ])),
-                    ),
-
-                    Wrap(
-                        spacing: 20,
-                        runSpacing: 20,
-                        children:
-                            // for(int i =0; i<5; i++) {
-                            //
-                            // },
-
-                            _getListings()
-
-                        // SeassionCard(
-                        //   whatisit: "Broccoli\nSalad\n",
-                        //   seassionNum: 'Cal 174',
-                        //   isDone: true,
-                        //   press: () {},
-                        // ),
-                        // SeassionCard(
-                        //   whatisit: "Broccoli\nSalad\n",
-                        //   seassionNum: 'Cal 174',
-                        //   press: () {},
-                        // ),
-                        // SeassionCard(
-                        //   whatisit: "Broccoli \nSalad\n",
-                        //   seassionNum: 'Cal 174',
-                        //   press: () {},
-                        // ),
-                        // SeassionCard(
-                        //   whatisit: "Broccoli \nSalad\n",
-                        //   seassionNum: 'Cal 174',
-                        //   press: () {},
-                        // ),
-                        // SeassionCard(
-                        //   whatisit: "Broccoli \nSalad\n",
-                        //   seassionNum: 'Cal 174',
-                        //   press: () {},
-                        // ),
-                        // SeassionCard(
-                        //   whatisit: "Broccoli \nSalad\n",
-                        //   seassionNum: 'Cal 174',
-                        //   press: () {},
-                        // ),
-
+                      SizedBox(height: 10),
+                      SizedBox(
+                        width:
+                            size.width * .6, // it just take 60% of total width
+                        child: Text(
+                          "Live happier and healthier by eating healthy food",
+                          style: TextStyle(color: Colors.white),
                         ),
-                    SizedBox(height: 20),
-                    //Meditation Scheduler
-                    Text(
-                      "Consumed Food:",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    // Container(
-                    //   margin: EdgeInsets.symmetric(vertical: 20),
-                    //   padding: EdgeInsets.all(10),
-                    //   height: 90,
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.black87,
-                    //     borderRadius: BorderRadius.circular(13),
-                    //     boxShadow: [
-                    //       BoxShadow(
-                    //         offset: Offset(0, 17),
-                    //         blurRadius: 23,
-                    //         spreadRadius: -13,
-                    //         color: kShadowColor,
-                    //       ),
-                    //     ],
-                    //   ),
-                    //   child: Row(
-                    //     children: <Widget>[
-                    //       SvgPicture.asset(
-                    //         "assets/icons/Hamburger.svg",
-                    //       ),
-                    //       SizedBox(width: 20),
-                    //       Expanded(
-                    //         child: Column(
-                    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           children: <Widget>[
-                    //             Text(
-                    //               "Today",
-                    //               style: Theme.of(context)
-                    //                   .textTheme
-                    //                   .subtitle1!
-                    //                   .apply(color: Colors.white),
-                    //             ),
-                    //             Text(
-                    //               "700 Calories",
-                    //               style: Theme.of(context)
-                    //                   .textTheme
-                    //                   .subtitle1!
-                    //                   .apply(color: Colors.white),
-                    //             )
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       Padding(
-                    //         padding: EdgeInsets.all(10),
-                    //         child: SvgPicture.asset("assets/icons/menu.svg"),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    Column(
-                      children: _getSelectedFoodListings(),
-                    ),
-                    // FoodCard(foodName, calories)
-                    // Container(
-                    //   margin: EdgeInsets.symmetric(vertical: 20),
-                    //   padding: EdgeInsets.all(10),
-                    //   height: 90,
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.black87,
-                    //     borderRadius: BorderRadius.circular(13),
-                    //     boxShadow: [
-                    //       BoxShadow(
-                    //         offset: Offset(0, 17),
-                    //         blurRadius: 23,
-                    //         spreadRadius: -13,
-                    //         color: kShadowColor,
-                    //       ),
-                    //     ],
-                    //   ),
-                    //   child: Row(
-                    //     children: <Widget>[
-                    //       SvgPicture.asset(
-                    //         "assets/icons/Hamburger.svg",
-                    //       ),
-                    //       SizedBox(width: 20),
-                    //       Expanded(
-                    //         child: Column(
-                    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           children: <Widget>[
-                    //             Text(
-                    //               "Yesterday",
-                    //               style: Theme.of(context)
-                    //                   .textTheme
-                    //                   .subtitle1!
-                    //                   .apply(color: Colors.white),
-                    //             ),
-                    //             Text(
-                    //               "2335 Calories",
-                    //               style: Theme.of(context)
-                    //                   .textTheme
-                    //                   .subtitle1!
-                    //                   .apply(color: Colors.white),
-                    //             )
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       Padding(
-                    //         padding: EdgeInsets.all(10),
-                    //         child: SvgPicture.asset("assets/icons/menu.svg"),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    //Sleep Scheduler
-                    SizedBox(height: 20),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        padding: EdgeInsets.all(10),
+                        height: 90,
+                        decoration: BoxDecoration(
+                          color: Colors.cyan,
+                          borderRadius: BorderRadius.circular(13),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 0),
+                              blurRadius: 13,
+                              spreadRadius: -10,
+                              color: kShadowColor,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            SvgPicture.asset(
+                              "assets/icons/Hamburger.svg",
+                            ),
+                            SizedBox(width: 20),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    "Today",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle1!
+                                        .apply(color: Colors.white),
+                                  ),
+                                  Text(
+                                    "${intakesumtoday.toString()} Calories",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle1!
+                                        .apply(color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: SvgPicture.asset("assets/icons/menu.svg"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        // width: size.width * .7, // it just take the 70% width
+                        width: size.width * 1, // it just take the 70% width
+                        child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 30),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(29.5),
+                            ),
+                            child: Row(children: [
+                              Flexible(
+                                child: TypeAheadField(
+                                  textFieldConfiguration:
+                                      TextFieldConfiguration(
+                                          autofocus: false,
+                                          controller: _typeAheadController,
+                                          style: TextStyle(
+                                              decoration: TextDecoration.none,
+                                              color: Colors.white),
+                                          decoration: InputDecoration(
+                                              hintText: "Search",
+                                              hintStyle: TextStyle(
+                                                  color: Colors.white),
+                                              border: OutlineInputBorder())),
+                                  suggestionsCallback: (pattern) async {
+                                    return await new SQLite().foodNames();
+                                  },
+                                  itemBuilder: (context, suggestion) {
+                                    return ListTile(
+                                      leading: Icon(Icons.fastfood),
+                                      title: Text(suggestion.toString()),
+                                    );
+                                  },
+                                  onSuggestionSelected: (suggestion) {
+                                    _typeAheadController.text =
+                                        suggestion.toString();
+                                    name = suggestion.toString();
+                                    new SQLite()
+                                        .foodCalorie(name)
+                                        .then((String val) {
+                                      cal = val;
+                                    });
+                                  },
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  new SQLite()
+                                      .initUserDataEntry(name, int.parse(cal));
+                                  _typeAheadController.text = cal;
 
-                  ],
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text(cal),
+                                  ));
+
+                                  addData(new Calorie(
+                                      foodName: name, calorie: int.parse(cal)));
+
+                                  //
+                                },
+                                child: Icon(
+                                  Icons.add_circle,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ])),
+                      ),
+
+                      Wrap(
+                          spacing: 20,
+                          runSpacing: 20,
+                          children:
+                              // for(int i =0; i<5; i++) {
+                              //
+                              // },
+
+                              _getListings()
+
+                          // SeassionCard(
+                          //   whatisit: "Broccoli\nSalad\n",
+                          //   seassionNum: 'Cal 174',
+                          //   isDone: true,
+                          //   press: () {},
+                          // ),
+                          // SeassionCard(
+                          //   whatisit: "Broccoli\nSalad\n",
+                          //   seassionNum: 'Cal 174',
+                          //   press: () {},
+                          // ),
+                          // SeassionCard(
+                          //   whatisit: "Broccoli \nSalad\n",
+                          //   seassionNum: 'Cal 174',
+                          //   press: () {},
+                          // ),
+                          // SeassionCard(
+                          //   whatisit: "Broccoli \nSalad\n",
+                          //   seassionNum: 'Cal 174',
+                          //   press: () {},
+                          // ),
+                          // SeassionCard(
+                          //   whatisit: "Broccoli \nSalad\n",
+                          //   seassionNum: 'Cal 174',
+                          //   press: () {},
+                          // ),
+                          // SeassionCard(
+                          //   whatisit: "Broccoli \nSalad\n",
+                          //   seassionNum: 'Cal 174',
+                          //   press: () {},
+                          // ),
+
+                          ),
+                      SizedBox(height: 20),
+                      //Meditation Scheduler
+                      Text(
+                        "Consumed Food:",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(vertical: 20),
+                      //   padding: EdgeInsets.all(10),
+                      //   height: 90,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.black87,
+                      //     borderRadius: BorderRadius.circular(13),
+                      //     boxShadow: [
+                      //       BoxShadow(
+                      //         offset: Offset(0, 17),
+                      //         blurRadius: 23,
+                      //         spreadRadius: -13,
+                      //         color: kShadowColor,
+                      //       ),
+                      //     ],
+                      //   ),
+                      //   child: Row(
+                      //     children: <Widget>[
+                      //       SvgPicture.asset(
+                      //         "assets/icons/Hamburger.svg",
+                      //       ),
+                      //       SizedBox(width: 20),
+                      //       Expanded(
+                      //         child: Column(
+                      //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //           crossAxisAlignment: CrossAxisAlignment.start,
+                      //           children: <Widget>[
+                      //             Text(
+                      //               "Today",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.white),
+                      //             ),
+                      //             Text(
+                      //               "700 Calories",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.white),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       Padding(
+                      //         padding: EdgeInsets.all(10),
+                      //         child: SvgPicture.asset("assets/icons/menu.svg"),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      Column(
+                        children: _getSelectedFoodListings(),
+                      ),
+                      // FoodCard(foodName, calories)
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(vertical: 20),
+                      //   padding: EdgeInsets.all(10),
+                      //   height: 90,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.black87,
+                      //     borderRadius: BorderRadius.circular(13),
+                      //     boxShadow: [
+                      //       BoxShadow(
+                      //         offset: Offset(0, 17),
+                      //         blurRadius: 23,
+                      //         spreadRadius: -13,
+                      //         color: kShadowColor,
+                      //       ),
+                      //     ],
+                      //   ),
+                      //   child: Row(
+                      //     children: <Widget>[
+                      //       SvgPicture.asset(
+                      //         "assets/icons/Hamburger.svg",
+                      //       ),
+                      //       SizedBox(width: 20),
+                      //       Expanded(
+                      //         child: Column(
+                      //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //           crossAxisAlignment: CrossAxisAlignment.start,
+                      //           children: <Widget>[
+                      //             Text(
+                      //               "Yesterday",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.white),
+                      //             ),
+                      //             Text(
+                      //               "2335 Calories",
+                      //               style: Theme.of(context)
+                      //                   .textTheme
+                      //                   .subtitle1!
+                      //                   .apply(color: Colors.white),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       Padding(
+                      //         padding: EdgeInsets.all(10),
+                      //         child: SvgPicture.asset("assets/icons/menu.svg"),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      //Sleep Scheduler
+                      SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -554,12 +554,12 @@ class SeassionCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Text(
-                      "$whatisit$seassionNum",
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(fontWeight: FontWeight.bold),
+                    Flexible(
+                      child: Text(
+                        "$whatisit$seassionNum",
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                            fontWeight: FontWeight.bold, fontSize: 13),
+                      ),
                     )
                   ],
                 ),

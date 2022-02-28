@@ -34,10 +34,10 @@ class RoutePage {
 
       case '/recipes':
         return MaterialPageRoute(
-            builder: (_) => HealthyRecipe(title: "Healthy Recipes"));
+            builder: (_) => HealthyRecipe(title: "Food Log"));
       case '/workout':
         return MaterialPageRoute(
-            builder: (_) => Workouts(title: "Workouts Resources"));
+            builder: (_) => Workouts(title: "Workouts Log"));
       case '/meditation':
         return MaterialPageRoute(
             builder: (_) => DetailsScreen(title: "Sleep and Meditation"));

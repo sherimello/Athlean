@@ -27,6 +27,7 @@ class Pushups extends StatelessWidget {
   Widget build(BuildContext context) {
     listIndex = int.parse(index);
     String exerciseName = exercises[listIndex].name;
+    String exerciseDetails = exercises[listIndex].Details;
     cal_Burn = double.parse(exercises[listIndex].calBurn);
     return Scaffold(
       body: Container(
@@ -111,7 +112,7 @@ class Pushups extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(15.0, 12, 12, 12),
                           child: Text(
-                            "__",
+                            exerciseDetails,
                             style: TextStyle(
                               fontSize: 19,
                               fontWeight: FontWeight.normal,
@@ -150,29 +151,29 @@ class Pushups extends StatelessWidget {
                               // the class receives a color for card bg and progress color,
                               // a text as the card title and lastly a progress of the respective action...
 
-                              ElevatedButton(
-                                onPressed: () {
-                                  showModalBottomSheet(
-                                    context: context,
-                                    isScrollControlled: true,
-                                    builder: (context) => SingleChildScrollView(
-                                      child: Container(
-                                        padding: EdgeInsets.only(
-                                            bottom: MediaQuery.of(context)
-                                                .viewInsets
-                                                .bottom),
-                                        child: Text(
-                                            'Add necessary input fields here.'),
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Text('Set Calorie Burn Goal'),
-                                style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.cyan)),
-                              ),
+                              // ElevatedButton(
+                              //   onPressed: () {
+                              //     showModalBottomSheet(
+                              //       context: context,
+                              //       isScrollControlled: true,
+                              //       builder: (context) => SingleChildScrollView(
+                              //         child: Container(
+                              //           padding: EdgeInsets.only(
+                              //               bottom: MediaQuery.of(context)
+                              //                   .viewInsets
+                              //                   .bottom),
+                              //           child: Text(
+                              //               'Add necessary input fields here.'),
+                              //         ),
+                              //       ),
+                              //     );
+                              //   },
+                              //   child: Text('Set Calorie Burn Goal'),
+                              //   style: ButtonStyle(
+                              //       backgroundColor:
+                              //           MaterialStateProperty.all<Color>(
+                              //               Colors.cyan)),
+                              // ),
                               ElevatedButton(
                                 onPressed: () {
                                   showModalBottomSheet(

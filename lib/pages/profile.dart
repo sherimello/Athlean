@@ -235,11 +235,11 @@ class _profileState extends State<profile> {
                                   ),
                                 ),
                                 Text(
-                                  'stats',
+                                  'Intake Goal : ${intake.toStringAsFixed(0)} kcal',
                                   style: TextStyle(
-                                    fontSize: 23,
+                                    fontSize: 19,
                                     fontWeight: FontWeight.w900,
-                                    color: Colors.black,
+                                    color: Colors.deepPurpleAccent,
                                   ),
                                 ),
                               ],

@@ -3,7 +3,6 @@ import 'color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-
 class login_fields extends StatefulWidget {
   const login_fields({Key? key}) : super(key: key);
 
@@ -12,7 +11,6 @@ class login_fields extends StatefulWidget {
 }
 
 class _login_fieldsState extends State<login_fields> {
-
   String userEmail = "";
   String userPassword = "";
 
@@ -102,17 +100,26 @@ class _login_fieldsState extends State<login_fields> {
                         showSpinner = true;
                       });
                       try {
-                        UserCredential userCredential = await auth.signInWithEmailAndPassword(
-                            email: userEmail,
-                            password: userPassword,
+                        UserCredential userCredential =
+                            await auth.signInWithEmailAndPassword(
+                          email: userEmail,
+                          password: userPassword,
                         );
                         Navigator.of(context).pushNamed('/home');
                         setState(() {
                           showSpinner = false;
                         });
                       } on FirebaseAuthException catch (e) {
+                        setState(() {
+                          showSpinner = false;
+                        });
                         if (e.code == 'user-not-found') {
-                          print('No user found for that email.');
+                          setState(() {
+                            showSpinner = false;
+                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            //   content: Text("Sending Message"),
+                            // ));
+                          });
                         } else if (e.code == 'wrong-password') {
                           print('Wrong password provided for that user.');
                         }

@@ -9,7 +9,6 @@ class Reg_fields extends StatefulWidget {
 }
 
 class _Reg_fieldsState extends State<Reg_fields> {
-
   String userName = "";
   String userEmail = "";
   String userPassword = "";
@@ -35,7 +34,8 @@ class _Reg_fieldsState extends State<Reg_fields> {
                   },
                   decoration: new InputDecoration(
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(width: 1.5, color: Colors.black54),
+                        borderSide:
+                            BorderSide(width: 1.5, color: Colors.black54),
                       ),
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(width: 1.5, color: orangy),
@@ -60,12 +60,13 @@ class _Reg_fieldsState extends State<Reg_fields> {
                   },
                   decoration: new InputDecoration(
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(width: 1.5, color: Colors.black54),
+                        borderSide:
+                            BorderSide(width: 1.5, color: Colors.black54),
                       ),
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(width: 1.5, color: orangy),
                       ),
-                      hintText: 'athlean@xyz.com',
+                      hintText: 'athlean@gmail.com',
                       labelText: 'email',
                       hintStyle: TextStyle(
                           color: Colors.black38, fontWeight: FontWeight.w600),
@@ -86,7 +87,8 @@ class _Reg_fieldsState extends State<Reg_fields> {
                   },
                   decoration: new InputDecoration(
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(width: 1.5, color: Colors.black54),
+                        borderSide:
+                            BorderSide(width: 1.5, color: Colors.black54),
                       ),
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(width: 1.5, color: orangy),
@@ -147,12 +149,16 @@ class _Reg_fieldsState extends State<Reg_fields> {
                                 email: userEmail,
                                 password: userPassword,
                               );
-                              await userCredential.user!.updateDisplayName(userName);
+                              await userCredential.user!
+                                  .updateDisplayName(userName);
                               Navigator.of(context).pushNamed('/home');
                               setState(() {
                                 showSpinner = false;
                               });
                             } on FirebaseAuthException catch (e) {
+                              setState(() {
+                                showSpinner = false;
+                              });
                               if (e.code == 'weak-password') {
                                 print('The password provided is too weak.');
                               } else if (e.code == 'email-already-in-use') {
